@@ -1,12 +1,20 @@
-import React from 'react';
+import React from "react";
+import { Button } from "./button";
+
+import "../../styles/index.scss";
+import "../../styles/card.scss";
 
 export const Card = () => {
-    return(
-        <div className="card" style="width: 18rem;">
-  <img src="..." className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-  </div>
-</div>
-    )
-}
+	return (
+		<div className="card p-2 m-4">
+			<img src="https://via.placeholder.com/300x200" className="card-img-top" alt="..." />
+			<div className="card-body">
+				<h3>Front-End Dev</h3>
+				<p className="card-text">Some quick example text to build on the card title and make up the bulk.</p>
+			</div>
+			<div className="d-flex justify-content-center">
+				<Button />
+			</div>
+		</div>
+	);
+};
