@@ -2,18 +2,22 @@ import React, { Component } from "react";
 import "../../styles/index.scss";
 import "../../styles/login.scss";
 import wizardImageUrl from "../../img/wizard-big.png";
-import varitaImageUrl from "../../img/varita.png";
-import { Button } from "./button";
+import starImageUrl from "../../img/star.png";
 
 export const Register = () => (
 	<div className="container">
 		<div className="form-container">
 			<form>
-				<div className="text-center">
-					<img src={varitaImageUrl} />
+				<div className="text-center hat">
+					<img src={starImageUrl} />
 				</div>
 
-				<h1 className="text-center mt-2">Sign Up for Free</h1>
+				<h1 className="text-center mt-2">
+					Sign Up{" "}
+					<strong>
+						<em>for Free</em>
+					</strong>
+				</h1>
 				<label className="sr-only">Email </label>
 				<input
 					type="email"
@@ -33,9 +37,9 @@ export const Register = () => (
 					autoFocus
 				/>
 
-				<div className=" text-center  mt-3">
+				<div className=" text-center  mt-4">
 					<button className="btn btn-lg btn-card btn-block" type="submit">
-						Lets Do This! ⭐
+						Create Account ⭐
 					</button>
 					<p className="text-center mt-3">
 						Already have an account? <a href="/login">Login</a>
