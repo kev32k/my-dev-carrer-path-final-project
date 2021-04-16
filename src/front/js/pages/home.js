@@ -4,7 +4,7 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 import "../../styles/hero.scss";
 import { Hero } from "../component/hero";
-import { Card } from "../component/card";
+
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -12,7 +12,6 @@ export const Home = () => {
 	return (
 		<div>
 			<Hero />
-			<Card />
 		</div>
 	);
 };
