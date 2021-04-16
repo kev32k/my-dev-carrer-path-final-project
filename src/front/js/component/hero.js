@@ -7,7 +7,7 @@ export const Hero = () => (
 	<div className="jumbotron jumbotron-fluid blue-gradient-bg">
 		<div className="container pt-5">
 			<section className="row">
-				<div className="col-sm hero-text">
+				<div className="col-sm hero-text d-none d-lg-block">
 					<h1>Messy Bookmark Bar?</h1>
 					<h2 className="mt-5 yellow-star">
 						Keep Acces To Your Online Courses Organized And Updated{" "}
