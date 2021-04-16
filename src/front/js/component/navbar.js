@@ -1,16 +1,49 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import mainLogo from "../../img/logo-nav.png";
+import "../../styles/index.scss";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-			</Link>
-			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context</button>
-				</Link>
+		<nav className="navbar navbar-expand-md navbar-dark blue-gradient-bg collapse-dark-bg">
+			<div className="container pt-5">
+				<a href="#" className="navbar-brand">
+					<img src={mainLogo} className="d-inline-block align-top" />
+				</a>
+				<button
+					className="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#toggleMobileMenu"
+					aria-controls="toggleMobileMenu"
+					aria-expanded="false"
+					aria-lable="Toggle navigation">
+					<span className="navbar-toggler-icon" />
+				</button>
+				<div className="collapse navbar-collapse" id="toggleMobileMenu">
+					<ul className="navbar-nav text-center ms-auto nav nav-pills">
+						<li>
+							<a className="nav-link active" href="#">
+								Home
+							</a>
+						</li>
+						<li>
+							<a className="nav-link" href="#">
+								Career Paths
+							</a>
+						</li>
+						<li>
+							<a className="nav-link" href="#">
+								Login
+							</a>
+						</li>
+						<li>
+							<a className="nav-link" href="#">
+								Signup
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
 		</nav>
 	);

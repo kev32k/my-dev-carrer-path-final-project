@@ -5,7 +5,7 @@ import wizardImageUrl from "../../img/wizard-big.png";
 import varitaImageUrl from "../../img/varita.png";
 import { Button } from "./button";
 
-export const Login = () => (
+export const Register = () => (
 	<div className="container">
 		<div className="form-container">
 			<form>
@@ -13,7 +13,7 @@ export const Login = () => (
 					<img src={varitaImageUrl} />
 				</div>
 
-				<h1 className="text-center mt-2">Login</h1>
+				<h1 className="text-center mt-2">Sign Up for Free</h1>
 				<label className="sr-only">Email </label>
 				<input
 					type="email"
@@ -32,17 +32,13 @@ export const Login = () => (
 					required
 					autoFocus
 				/>
-				<div className="text-center checkbox mt-3">
-					<label>
-						<input type="checkbox" value="remember-me" /> Remember me
-					</label>
-				</div>
+
 				<div className=" text-center  mt-3">
 					<button className="btn btn-lg btn-card btn-block" type="submit">
 						Lets Do This! ⭐
 					</button>
 					<p className="text-center mt-3">
-						<a href="/register">sign up here</a> or <a href="/forgot">forgot password?</a>
+						Already have an account? <a href="/login">Login</a>
 					</p>
 				</div>
 			</form>
