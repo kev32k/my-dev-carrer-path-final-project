@@ -13,7 +13,11 @@ export const Home = () => {
 	return (
 		<div>
 			<Hero />
-			<Card />
+			<div className="container">
+				<Card />
+				<Card />
+				<Card />
+			</div>
 		</div>
 	);
 };
