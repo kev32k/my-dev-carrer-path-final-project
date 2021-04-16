@@ -38,7 +38,7 @@ export const Login = () => (
 					</label>
 				</div>
 				<div className=" text-center  mt-3">
-					<button className="btn btn-lg btn-primary btn-block" type="submit">
+					<button className="btn btn-lg btn-card btn-block" type="submit">
 						Lets Do This! ⭐
 					</button>
 					<p className="text-center mt-3">
