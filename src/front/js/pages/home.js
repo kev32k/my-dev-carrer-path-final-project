@@ -13,7 +13,7 @@ export const Home = () => {
 	return (
 		<div>
 			<Hero />
-			<div className="container">
+			<div className="row m-5 d-flex justify-content-center">
 				<Card />
 				<Card />
 				<Card />
