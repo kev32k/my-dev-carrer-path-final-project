@@ -1,11 +1,16 @@
+//@use 'src/front/styles/colors.scss';
+
 .card{
     flex-wrap: wrap;
     width: 350px;
     border-radius: 20px;
     text-align: center;
+    background-color: #D8D8D8;
 }
 
 .card img{
+    width: 330px;
+    height: 220px;
     border-radius: 20px;
 }
 
