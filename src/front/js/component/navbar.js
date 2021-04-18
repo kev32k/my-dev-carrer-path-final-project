@@ -28,9 +28,9 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li>
-							<a className="nav-link" href="#">
-								Career Paths
-							</a>
+							<Link to="/learningPath">
+								<button className="nav-link">Career Path</button>
+							</Link>
 						</li>
 						<li>
 							<Link to="/login">
