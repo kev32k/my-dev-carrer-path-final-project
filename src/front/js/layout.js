@@ -8,13 +8,11 @@ import { Forgot } from "./pages/forgot";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
-//import { LearningPath } from "./pages/learningPath";
+import { LearningPath } from "./pages/learningPath";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Login } from "./component/login";
-
-import { LearningPath } from "./component/learningPath";
 
 //create your first component
 const Layout = () => {
