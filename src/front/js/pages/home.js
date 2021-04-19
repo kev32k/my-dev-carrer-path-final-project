@@ -8,6 +8,7 @@ import "../../styles/hero.scss";
 import { Hero } from "../component/hero";
 import { Card } from "../component/card";
 import { Login } from "../component/login";
+import { Breadcrumb } from "react-bootstrap";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
