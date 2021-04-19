@@ -6,8 +6,8 @@ import "../../styles/index.scss";
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-expand-md navbar-dark blue-gradient-bg collapse-dark-bg">
-			<div className="container pt-5">
-				<a href="#" className="navbar-brand">
+			<div className="container">
+				<a href="/" className="navbar-brand">
 					<img src={mainLogo} className="d-inline-block align-top" />
 				</a>
 				<button
@@ -21,26 +21,26 @@ export const Navbar = () => {
 					<span className="navbar-toggler-icon" />
 				</button>
 				<div className="collapse navbar-collapse" id="toggleMobileMenu">
-					<ul className="navbar-nav text-center ms-auto nav nav-pills">
+					<ul className="navbar-nav text-center ms-auto nav-pills">
 						<li>
-							<a className="nav-link active" href="#">
-								Home
-							</a>
+							<Link to="/">
+								<button className="nav-link active">Home</button>
+							</Link>
 						</li>
 						<li>
-							<a className="nav-link" href="#">
-								Career Paths
-							</a>
+							<Link to="/learningPath">
+								<button className="nav-link">Career Path</button>
+							</Link>
 						</li>
 						<li>
-							<a className="nav-link" href="#">
-								Login
-							</a>
+							<Link to="/login">
+								<button className="nav-link">Login</button>
+							</Link>
 						</li>
 						<li>
-							<a className="nav-link" href="#">
-								Signup
-							</a>
+							<Link to="/register">
+								<button className="nav-link">Sign Up</button>
+							</Link>
 						</li>
 					</ul>
 				</div>
