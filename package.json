@@ -77,7 +77,7 @@
 	},
 	"dependencies": {
 		"bootstrap": "^5.0.0-beta3",
-		"prop-types": "^15.6.1",
+		"prop-types": "^15.7.2",
 		"react": "^16.8.4",
 		"react-bootstrap": "^1.5.2",
 		"react-dom": "^16.8.4",
