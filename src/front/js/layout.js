@@ -9,6 +9,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { LearningPath } from "./pages/learningPath";
+import { User_Dashboard } from "./pages/userdashboard";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -37,6 +38,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/register">
 							<Register />
+						</Route>
+						<Route exact path="/user_dashboard">
+							<User_Dashboard />
 						</Route>
 						<Route exact path="/forgot">
 							<Forgot />
