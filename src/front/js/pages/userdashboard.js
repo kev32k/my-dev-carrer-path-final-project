@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/userdashboard.scss";
-import profileImageUrl from "../../img/avatar-profile.png";
+import profileImageUrl from "../../img/avatar-profile-200px.png";
 
 export const User_Dashboard = () => {
 	return (
@@ -26,7 +26,7 @@ export const User_Dashboard = () => {
 						<div className="col-sm-5">
 							<p className="mb">My Carrer Path</p>
 							<div>
-								<button className="btn btn-card p-2 m-1">⭐Front-end Developer</button>
+								<button className="btn btn-card p-2 m-1">Front-end Developer</button>
 							</div>
 						</div>
 					</div>

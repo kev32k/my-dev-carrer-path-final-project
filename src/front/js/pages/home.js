@@ -70,7 +70,11 @@ export const Home = () => {
 							<p className="card-text">
 								Understand React Native v0.62.2 with Hooks, Context, and React Navigation.
 							</p>
-							<a href={"https://www.udemy.com" + course.url} className="btn btn-primary mb-5">
+							<a
+								href={"https://www.udemy.com" + course.url}
+								className="btn btn-primary mb-5"
+								target="_blank"
+								rel="noopener noreferrer">
 								Go to Course
 							</a>
 						</div>
