@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/userdashboard.scss";
+import profileImageUrl from "../../img/avatar-profile.png";
 
 export const User_Dashboard = () => {
 	return (
@@ -11,12 +12,7 @@ export const User_Dashboard = () => {
 							<div className="card">
 								<div className="card-body">
 									<div className="d-flex flex-column align-items-center text-center">
-										<img
-											src="https://bootdey.com/img/Content/avatar/avatar7.png"
-											alt="Admin"
-											className="rounded-circle"
-											width="150"
-										/>
+										<img img src={profileImageUrl} alt="Admin" className="" />
 										<div className="mt-3">
 											<button className="btn btn-outline-primary">Change Picture</button>
 											<p className="text-secondary mb-1">The Bookmark Keeper</p>

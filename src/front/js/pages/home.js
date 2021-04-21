@@ -13,7 +13,7 @@ export const Home = () => {
 	const [course, setCourse] = useState([]);
 
 	useEffect(() => {
-		fetch("https://www.udemy.com/api-2.0/courses/2337794/", {
+		fetch("https://www.udemy.com/api-2.0/courses/", {
 			method: "GET",
 			headers: {
 				Accept: "application/json, text/plain, */*",
@@ -28,7 +28,7 @@ export const Home = () => {
 			})
 			.then(data => {
 				console.log(data);
-				setCourse(data);
+				setCourse(data.results);
 			})
 			.catch(error => console.log(error));
 	}, []);
@@ -55,6 +55,20 @@ export const Home = () => {
 					content="Get started as an Android / Apple app developer. 
                     Add your online courses on Java, React Native, REST."
 				/>
+			</div>
+			<div className="container">
+				<h2>Editors pick recommended courses</h2>
+				<div className="row">
+					<div className="col">
+						<p>
+							{course.map((elemento, index, arr) => {
+								return <li key={index}>{elemento.title}</li>;
+							})}
+						</p>
+					</div>
+					<div className="col">2</div>
+					<div className="col">3</div>
+				</div>
 			</div>
 		</div>
 	);
