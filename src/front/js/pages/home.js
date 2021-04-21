@@ -36,7 +36,7 @@ export const Home = () => {
 	return (
 		<div>
 			<Hero />
-			<div className="row m-5 d-flex justify-content-center">
+			<div className="row d-flex justify-content-center mt-5">
 				<Card
 					img={frontEndUrl}
 					name="Front-End Developer"
@@ -57,8 +57,8 @@ export const Home = () => {
 				/>
 			</div>
 			<div className="container">
-				<div className="alert alert-primary">
-					<h4>Editor Pick: Our Favorite Online Course of the Month</h4>
+				<div className="feature-title text-center mt-5">
+					<h3>⭐ Editor Pick: Our Favorite Online Course of the Month ⭐</h3>
 				</div>
 
 				<div className="feature_card">
@@ -70,7 +70,7 @@ export const Home = () => {
 							<p className="card-text">
 								Understand React Native v0.62.2 with Hooks, Context, and React Navigation.
 							</p>
-							<a href={"https://www.udemy.com" + course.url} className="btn btn-primary">
+							<a href={"https://www.udemy.com" + course.url} className="btn btn-primary mb-5">
 								Go to Course
 							</a>
 						</div>
