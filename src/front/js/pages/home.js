@@ -40,17 +40,20 @@ export const Home = () => {
 				<Card
 					img={frontEndUrl}
 					name="Front-End Developer"
-					content="Some quick example text to build on the card title and make up the bulk."
+					content="Get started as a front-end web developer. 
+                    Add your online courses on HTML, CSS, Javascript, React, Angular, JQuery, and Bootstrap."
 				/>
 				<Card
 					img={backEndUrl}
 					name="Back-End Developer"
-					content="Some quick example text to build on the card title and make up the bulk."
+					content="Get started as a back-end web developer. 
+                    Add your online courses on Java, Python, Node, Ruby, .Net, SQL, Apache and IIS Servers."
 				/>
 				<Card
 					img={mobileUrl}
 					name="Mobile Developer"
-					content="Some quick example text to build on the card title and make up the bulk."
+					content="Get started as an Android / Apple app developer. 
+                    Add your online courses on Java, React Native, REST."
 				/>
 			</div>
 		</div>
