@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { Box } from "./../component/box";
 import "../../styles/index.scss";
 //import "../../styles/card.scss";
+
+//recordar cambiar id de los tabs!!
 
 export const LearningPathView = () => {
 	const [activeLinkIndex, setActiveLinkIndex] = useState(0);
@@ -31,7 +34,9 @@ export const LearningPathView = () => {
 								data-bs-toggle="pill"
 								data-bs-target="#v-pills-home"
 								type="button"
-								role="tab">
+								role="tab"
+								aria-controls="v-pills-home"
+								aria-selected="true">
 								⭐ Html5
 							</button>
 							<button
@@ -43,7 +48,9 @@ export const LearningPathView = () => {
 								data-bs-toggle="pill"
 								data-bs-target="#v-pills-profile"
 								type="button"
-								role="tab">
+								role="tab"
+								aria-controls="v-pills-profile"
+								aria-selected="false">
 								⭐ CSS
 							</button>
 							<button
@@ -55,7 +62,9 @@ export const LearningPathView = () => {
 								data-bs-toggle="pill"
 								data-bs-target="#v-pills-messages"
 								type="button"
-								role="tab">
+								role="tab"
+								aria-controls="v-pills-messages"
+								aria-selected="false">
 								⭐ JavaScript
 							</button>
 							<button
@@ -67,97 +76,48 @@ export const LearningPathView = () => {
 								data-bs-toggle="pill"
 								data-bs-target="#v-pills-settings"
 								type="button"
-								role="tab">
+								role="tab"
+								aria-controls="v-pills-settings"
+								aria-selected="false">
 								⭐ React
 							</button>
 						</div>
-
-						{/* <div className="tab-content" id="v-pills-tabContent">
-							<div
-								className="tab-pane fade show active"
-								id="v-pills-home"
-								role="tabpanel"
-								aria-labelledby="v-pills-home-tab">
-								...
-							</div>
-							<div
-								className="tab-pane fade"
-								id="v-pills-profile"
-								role="tabpanel"
-								aria-labelledby="v-pills-profile-tab">
-								...
-							</div>
-							<div
-								className="tab-pane fade"
-								id="v-pills-messages"
-								role="tabpanel"
-								aria-labelledby="v-pills-messages-tab">
-								...
-							</div>
-							<div
-								className="tab-pane fade"
-								id="v-pills-settings"
-								role="tabpanel"
-								aria-labelledby="v-pills-settings-tab"
-							/>
-						</div> */}
 					</div>
 				</div>
+
 				<div className="col ">
-					<div className="box position-relative p-4">
-						<div className="box-row  p-2">
-							<h3>From zero to hero in html5</h3>
-							{/*esto va a cambiar segun lo que se agrega y usara props posiblememnte*/}
-							<span>
-								<a href="https://www.freecodecamp.org/learn/">https://www.freecodecamp.org/learn/</a>
-							</span>
-							<div>
-								<div className="form-check form-check-inline">
-									<input
-										className="form-check-input"
-										type="radio"
-										name="inlineRadioOptions"
-										id="inlineRadio1"
-										value="option1"
-									/>
-									<label className="form-check-label" htmlFor="inlineRadio1">
-										In Progress
-									</label>
-								</div>
-								<div className="form-check form-check-inline">
-									<input
-										className="form-check-input"
-										type="radio"
-										name="inlineRadioOptions"
-										id="inlineRadio2"
-										value="option2"
-									/>
-									<label className="form-check-label" htmlFor="inlineRadio2">
-										Completed
-									</label>
-								</div>
-							</div>
+					<div className="tab-content" id="v-pills-tabContent">
+						<div
+							className={activeLinkIndex === 0 ? "tab-pane fade show active" : "tab-pane fade"}
+							// className="tab-pane fade show active"
+							id="v-pills-home"
+							role="tabpanel"
+							aria-labelledby="v-pills-home-tab">
+							<Box name="Html view" />
 						</div>
-						<div className="box-row row2 p-2 position-absolute bottom-0 start-50 translate-middle-x">
-							<div className="mb-3 row">
-								<label htmlFor="inputName" className="col-sm-2 col-form-label">
-									name
-								</label>
-								<div className="col-sm-10">
-									<input type="text" className="form-control" id="inputName" />
-								</div>
-							</div>
-							<div className="mb-3 row">
-								<label htmlFor="inputUrl" className="col-sm-2 col-form-label">
-									url
-								</label>
-								<div className="col-sm-10">
-									<input type="text" className="form-control" id="inputUrl" />
-								</div>
-							</div>
-							<button className="btn btn-card p-1 m-1 position-absolute top-100 start-50 translate-middle">
-								Add new ⭐
-							</button>
+						<div
+							className={activeLinkIndex === 1 ? "tab-pane fade show active" : "tab-pane fade"}
+							// className="tab-pane fade"
+							id="v-pills-profile"
+							role="tabpanel"
+							aria-labelledby="v-pills-profile-tab">
+							<Box name="css view" />
+						</div>
+						<div
+							className={activeLinkIndex === 2 ? "tab-pane fade show active" : "tab-pane fade"}
+							// className="tab-pane fade"
+							id="v-pills-messages"
+							role="tabpanel"
+							aria-labelledby="v-pills-messages-tab">
+							<Box name="js view" />
+						</div>
+						<div
+							className={activeLinkIndex === 2 ? "tab-pane fade show active" : "tab-pane fade"}
+							// className="tab-pane fade"
+							id="v-pills-settings"
+							role="tabpanel"
+							aria-labelledby="v-pills-settings-tab">
+							<Box name="react view" />
 						</div>
 					</div>
 				</div>
