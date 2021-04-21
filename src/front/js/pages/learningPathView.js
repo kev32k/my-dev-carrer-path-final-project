@@ -103,9 +103,9 @@ export const LearningPathView = () => {
 						</div> */}
 					</div>
 				</div>
-				<div className="col">
-					<div className="box p-4">
-						<div className="box-row p-2">
+				<div className="col ">
+					<div className="box position-relative p-4">
+						<div className="box-row  p-2">
 							<h3>From zero to hero in html5</h3>
 							{/*esto va a cambiar segun lo que se agrega y usara props posiblememnte*/}
 							<span>
@@ -121,7 +121,7 @@ export const LearningPathView = () => {
 										value="option1"
 									/>
 									<label className="form-check-label" htmlFor="inlineRadio1">
-										1
+										In Progress
 									</label>
 								</div>
 								<div className="form-check form-check-inline">
@@ -133,23 +133,31 @@ export const LearningPathView = () => {
 										value="option2"
 									/>
 									<label className="form-check-label" htmlFor="inlineRadio2">
-										2
+										Completed
 									</label>
 								</div>
 							</div>
 						</div>
-						<div className="box-row p-2 align-bottom">
-							<span>
-								Course Name
-								<input
-									type="name"
-									id="name"
-									className=" m-1"
-									placeholder="Course Name"
-									required
-									autoFocus
-								/>
-							</span>
+						<div className="box-row row2 p-2 position-absolute bottom-0 start-50 translate-middle-x">
+							<div className="mb-3 row">
+								<label htmlFor="inputName" className="col-sm-2 col-form-label">
+									name
+								</label>
+								<div className="col-sm-10">
+									<input type="text" className="form-control" id="inputName" />
+								</div>
+							</div>
+							<div className="mb-3 row">
+								<label htmlFor="inputUrl" className="col-sm-2 col-form-label">
+									url
+								</label>
+								<div className="col-sm-10">
+									<input type="text" className="form-control" id="inputUrl" />
+								</div>
+							</div>
+							<button className="btn btn-card p-1 m-1 position-absolute top-100 start-50 translate-middle">
+								Add new ⭐
+							</button>
 						</div>
 					</div>
 				</div>
