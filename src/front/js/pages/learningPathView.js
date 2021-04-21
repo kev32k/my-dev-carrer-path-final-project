@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./../../styles/index.scss";
+import "../../styles/index.scss";
+//import "../../styles/card.scss";
 
 export const LearningPathView = () => {
 	const [activeLinkIndex, setActiveLinkIndex] = useState(0);
@@ -23,51 +24,51 @@ export const LearningPathView = () => {
 							aria-orientation="vertical">
 							<button
 								onClick={() => setActiveLinkIndex(0)}
-								className={activeLinkIndex === 0 ? "btn btn-card p-3 m-1 nav-link active" : ""}
+								className={
+									activeLinkIndex === 0 ? "btn btn-card p-3 m-1  active" : "btn btn-card p-3 m-1 "
+								}
 								id="v-pills-home-tab"
 								data-bs-toggle="pill"
 								data-bs-target="#v-pills-home"
 								type="button"
-								role="tab"
-								aria-controls="v-pills-home"
-								aria-selected="true">
-								Home
+								role="tab">
+								⭐ Html5
 							</button>
 							<button
-								onClick={() => setActiveLinkIndex(0)}
-								className={activeLinkIndex === 0 ? "btn btn-card p-3 m-1 nav-link active" : ""}
+								onClick={() => setActiveLinkIndex(1)}
+								className={
+									activeLinkIndex === 1 ? "btn btn-card p-3 m-1  active" : "btn btn-card p-3 m-1 "
+								}
 								id="v-pills-profile-tab"
 								data-bs-toggle="pill"
 								data-bs-target="#v-pills-profile"
 								type="button"
-								role="tab"
-								aria-controls="v-pills-profile"
-								aria-selected="false">
-								Profile
+								role="tab">
+								⭐ CSS
 							</button>
 							<button
-								onClick={() => setActiveLinkIndex(0)}
-								className={activeLinkIndex === 0 ? "btn btn-card p-3 m-1 nav-link active" : ""}
+								onClick={() => setActiveLinkIndex(2)}
+								className={
+									activeLinkIndex === 2 ? "btn btn-card p-3 m-1  active" : "btn btn-card p-3 m-1 "
+								}
 								id="v-pills-messages-tab"
 								data-bs-toggle="pill"
 								data-bs-target="#v-pills-messages"
 								type="button"
-								role="tab"
-								aria-controls="v-pills-messages"
-								aria-selected="false">
-								Messages
+								role="tab">
+								⭐ JavaScript
 							</button>
 							<button
-								onClick={() => setActiveLinkIndex(0)}
-								className={activeLinkIndex === 0 ? "btn btn-card p-3 m-1 nav-link active" : ""}
+								onClick={() => setActiveLinkIndex(3)}
+								className={
+									activeLinkIndex === 3 ? "btn btn-card p-3 m-1  active" : "btn btn-card p-3 m-1 "
+								}
 								id="v-pills-settings-tab"
 								data-bs-toggle="pill"
 								data-bs-target="#v-pills-settings"
 								type="button"
-								role="tab"
-								aria-controls="v-pills-settings"
-								aria-selected="false">
-								Settings
+								role="tab">
+								⭐ React
 							</button>
 						</div>
 
@@ -136,6 +137,19 @@ export const LearningPathView = () => {
 									</label>
 								</div>
 							</div>
+						</div>
+						<div className="box-row p-2 align-bottom">
+							<span>
+								Course Name
+								<input
+									type="name"
+									id="name"
+									className=" m-1"
+									placeholder="Course Name"
+									required
+									autoFocus
+								/>
+							</span>
 						</div>
 					</div>
 				</div>
