@@ -13,7 +13,7 @@ export const Home = () => {
 	const [course, setCourse] = useState([]);
 
 	useEffect(() => {
-		fetch("https://www.udemy.com/api-2.0/courses/", {
+		fetch("https://www.udemy.com/api-2.0/courses/959700/", {
 			method: "GET",
 			headers: {
 				Accept: "application/json, text/plain, */*",
@@ -28,7 +28,7 @@ export const Home = () => {
 			})
 			.then(data => {
 				console.log(data);
-				setCourse(data.results);
+				setCourse(data);
 			})
 			.catch(error => console.log(error));
 	}, []);
@@ -57,17 +57,24 @@ export const Home = () => {
 				/>
 			</div>
 			<div className="container">
-				<h2>Editors pick recommended courses</h2>
-				<div className="row">
-					<div className="col">
-						<p>
-							{course.map((elemento, index, arr) => {
-								return <li key={index}>{elemento.title}</li>;
-							})}
-						</p>
+				<div className="alert alert-primary">
+					<h4>Editor Pick: Our Favorite Online Course of the Month</h4>
+				</div>
+
+				<div className="feature_card">
+					<div className=" mt-5">
+						<h5 className="card-header">Featured Course</h5>
+						<div className="card-body">
+							<h5 className="card-title">{course.title}</h5>
+							<img src={course.image_480x270} />
+							<p className="card-text">
+								Understand React Native v0.62.2 with Hooks, Context, and React Navigation.
+							</p>
+							<a href={"https://www.udemy.com" + course.url} className="btn btn-primary">
+								Go to Course
+							</a>
+						</div>
 					</div>
-					<div className="col">2</div>
-					<div className="col">3</div>
 				</div>
 			</div>
 		</div>
