@@ -62,3 +62,26 @@
     background-color: #D8D8D8;
     border-radius: 15px;
 }
+
+.feature_card {
+    text-align: center;
+}
+
+.feature-title h3{
+    font-family: lato,sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    color: #4e80de;
+}
+
+
+// mobile media queries
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+
+    .card-body img {
+        width: 100%;
+    }
+
+}
+
