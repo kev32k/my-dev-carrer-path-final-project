@@ -8,13 +8,18 @@
     background-color: #D8D8D8;
 }
 
+.card:hover{
+    box-shadow: 5px 10px #694EDE;
+}
+
 .card img{
     width: 330px;
     height: 220px;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 .btn{
     width: 250px;
-    border-radius: 10px;
+    border-radius: 15px;
+    //background-color: #717CFF;
 }
