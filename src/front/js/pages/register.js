@@ -18,11 +18,20 @@ export const Register = () => (
 						<em>for Free</em>
 					</strong>
 				</h1>
+				<label className="sr-only">Name </label>
+				<input
+					type="email"
+					id="name"
+					className="form-control mt-5"
+					placeholder="Your Name"
+					required
+					autoFocus
+				/>
 				<label className="sr-only">Email </label>
 				<input
 					type="email"
 					id="emailAddress"
-					className="form-control mt-5"
+					className="form-control mt-4"
 					placeholder="Email Address"
 					required
 					autoFocus

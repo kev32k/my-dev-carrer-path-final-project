@@ -1,46 +1,38 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			bearer_token: "",
+			login: false
 		},
+
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
+			register_user: async (name, email, password) => {
+				const requestOptions = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ name: name, email: email, password: password })
+				};
+				fetch(global_url + "api/register", requestOptions)
+					.then(response => response.json())
+					.then(data => console.log(data));
 			},
 
-			getMessage: () => {
-				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/hello")
-					.then(resp => resp.json())
-					.then(data => setStore({ message: data.message }))
-					.catch(error => console.log("Error loading message from backend", error));
-			},
-			changeColor: (index, color) => {
-				//get the store
+			login_user: async (email, password) => {
 				const store = getStore();
+				const requestOptions = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ email: email, password: password })
+				};
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+				await fetch(global_url + "api/login", requestOptions)
+					.then(response => response.json())
+					.then(data => setStore({ bearer_token: data }));
+				console.log(store.bearer_token);
 
-				//reset the global store
-				setStore({ demo: demo });
+				if (store.bearer_token.length > 0) {
+					setStore({ login: true });
+				}
 			}
 		}
 	};

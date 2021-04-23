@@ -9,6 +9,8 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 import { LearningPath } from "./pages/learningPath";
+import { LearningPathView } from "./pages/learningPathView";
+import { User_Dashboard } from "./pages/userdashboard";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -32,11 +34,17 @@ const Layout = () => {
 						<Route exact path="/learningPath">
 							<LearningPath />
 						</Route>
+						<Route exact path="/learningPathView">
+							<LearningPathView />
+						</Route>
 						<Route exact path="/login">
 							<Login />
 						</Route>
 						<Route exact path="/register">
 							<Register />
+						</Route>
+						<Route exact path="/userdashboard">
+							<User_Dashboard />
 						</Route>
 						<Route exact path="/forgot">
 							<Forgot />

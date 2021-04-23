@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "./button";
 import PropTypes from "prop-types";
 
 import "../../styles/index.scss";

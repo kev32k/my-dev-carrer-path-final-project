@@ -27,6 +27,11 @@
     color: #fff;
     background-color: #717CFF;
 }
+
+.btn-card:hover{
+    color: #fff;
+    background: linear-gradient(90deg,#694EDE 1%,#4e80de 40%);
+}
 //Navbar
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: #fff;
@@ -35,4 +40,48 @@
 
 .navbar li a{
     text-decoration: none;
+    color: lightblue;
 }
+
+.navbar li {
+    padding-left: 30px;
+}
+
+.nav-link {
+    padding: 0;
+}
+
+//box
+.box{
+    background-color: #717CFF;
+    min-height: 500px;
+    border-radius: 15px;
+   
+}
+.box-row{
+    background-color: #D8D8D8;
+    border-radius: 15px;
+}
+
+.feature_card {
+    text-align: center;
+}
+
+.feature-title h3{
+    font-family: lato,sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    color: #4e80de;
+}
+
+
+// mobile media queries
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px){
+
+    .card-body img {
+        width: 100%;
+    }
+
+}
+

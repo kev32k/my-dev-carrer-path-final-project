@@ -15,7 +15,7 @@ export const LearningPath = () => {
 
 	return (
 		<div className="container">
-			<p className="p-3 mx-4">Select any of our recommended career paths curricula</p>
+			<h4 className="p-3 mx-4 mt-5">Select any of our recommended career paths curricula</h4>
 			<LongCard
 				img={frontEndUrl}
 				name="Become a Front-End Expert"
