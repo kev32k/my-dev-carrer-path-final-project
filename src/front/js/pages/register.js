@@ -55,6 +55,38 @@ export const Register = () => (
 					</p>
 				</div>
 			</form>
+            {auth ? <Redirect to = "/login" /> : null}
 		</div>
 	</div>
 );
+
+export const registerUser = () =>{
+    const [email, setEmail] = userState("");
+    const [password, setPassword] = userState("");
+    const [name, setName] = userState("");
+    const [auth, setAuth] = userState(false);
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        const body = {
+            email:email,
+            password:password,
+            name:name
+        };
+
+        fetch("https://3001-indigo-angelfish-r697zt96.ws-us03.gitpod.io/register", {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers:{
+                "Content-Type":"application/json"
+            }
+        })
+        .then(res = res.json())
+        .then(data => {
+            console.log(data);
+            setAuth(true);
+        })
+        .catch(err => console.log(err));
+    }
+}
