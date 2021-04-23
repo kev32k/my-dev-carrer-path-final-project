@@ -6,8 +6,8 @@ import "../../styles/index.scss";
 //recordar cambiar id de los tabs!!
 
 export const LearningPathView = () => {
-    const [activeLinkIndex, setActiveLinkIndex] = useState(0);
-    
+	const [activeLinkIndex, setActiveLinkIndex] = useState(0);
+
 	return (
 		<div className="container">
 			<div className="row my-4">
@@ -15,7 +15,6 @@ export const LearningPathView = () => {
 			</div>
 			<div className="row my-1">
 				<div className="col-4">
-
 					<div className="d-flex align-items-start">
 						<div
 							className="nav flex-column nav-pills me-3"

@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 export const Box = props => {
-    const [list, setlist] = useState([]);
-    function handleEvent(e) {
-		if (e.key === "Enter") {
+	const [list, setlist] = useState([]);
+	function handleEvent(e) {
+		
 			setlist([...list, e.target.value]);
-		}
+		
 	}
+	const removeItem = indexItem => {
+		setlist(prevState =>
+			prevState.filter((todo, index) => index !== indexItem)
+		);
+	};
 	return (
 		<div className="box position-relative p-4">
 			<div className="box-row  p-2">
@@ -42,14 +47,13 @@ export const Box = props => {
 						</label>
 					</div>
 				</div> */}
-                <ul className="list-group list-group-flus">
+				{/* <input type="text" placeholder="What needs to be done?" onKeyDown={event => handleEvent(event)} /> */}
+				{/* <ul className="list-group list-group-flus">
 					{list.map((item, index) => {
 						return (
 							<li className="list-group-item " key={index}>
 								{item}{" "}
-								<button
-									className="btn btn-danger"
-									onClick={() => removeItem(index)}>
+								<button className="btn btn-danger" onClick={() => removeItem(index)}>
 									X
 								</button>
 							</li>
@@ -57,7 +61,7 @@ export const Box = props => {
 					})}
 
 					<p>{list.length + "   item left"}</p>
-				</ul>
+				</ul> */}
 			</div>
 			<div className="box-row row2 p-2 position-absolute bottom-0 start-50 translate-middle-x">
 				<div className="mb-3 row">
@@ -76,7 +80,9 @@ export const Box = props => {
 						<input type="text" className="form-control" id="inputUrl" />
 					</div>
 				</div>
-				<button className="btn btn-card p-1 m-1 position-absolute top-100 start-50 translate-middle">
+				<button
+					className="btn btn-card p-1 m-1 position-absolute top-100 start-50 translate-middle"
+					onClick={handleClick}>
 					Add new ⭐
 				</button>
 			</div>
