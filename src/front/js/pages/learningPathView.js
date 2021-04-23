@@ -6,7 +6,8 @@ import "../../styles/index.scss";
 //recordar cambiar id de los tabs!!
 
 export const LearningPathView = () => {
-	const [activeLinkIndex, setActiveLinkIndex] = useState(0);
+    const [activeLinkIndex, setActiveLinkIndex] = useState(0);
+    
 	return (
 		<div className="container">
 			<div className="row my-4">
@@ -14,10 +15,6 @@ export const LearningPathView = () => {
 			</div>
 			<div className="row my-1">
 				<div className="col-4">
-					{/* <button className="btn btn-card p-3 m-1">Add career path ⭐</button>
-					<button className="btn btn-card p-3 m-1">Add career path ⭐</button>
-					<button className="btn btn-card p-3 m-1">Add career path ⭐</button>
-					<button className="btn btn-card p-3 m-1">Add career path ⭐</button> */}
 
 					<div className="d-flex align-items-start">
 						<div
@@ -44,12 +41,12 @@ export const LearningPathView = () => {
 								className={
 									activeLinkIndex === 1 ? "btn btn-card p-3 m-1  active" : "btn btn-card p-3 m-1 "
 								}
-								id="v-pills-profile-tab"
+								id="v-pills-css-tab"
 								data-bs-toggle="pill"
-								data-bs-target="#v-pills-profile"
+								data-bs-target="#v-pills-css"
 								type="button"
 								role="tab"
-								aria-controls="v-pills-profile"
+								aria-controls="v-pills-css"
 								aria-selected="false">
 								⭐ CSS
 							</button>
@@ -98,9 +95,9 @@ export const LearningPathView = () => {
 						<div
 							className={activeLinkIndex === 1 ? "tab-pane fade show active" : "tab-pane fade"}
 							// className="tab-pane fade"
-							id="v-pills-profile"
+							id="v-pills-css"
 							role="tabpanel"
-							aria-labelledby="v-pills-profile-tab">
+							aria-labelledby="v-pills-css-tab">
 							<Box name="css view" />
 						</div>
 						<div

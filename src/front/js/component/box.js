@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 export const Box = props => {
+    const [list, setlist] = useState([]);
+    function handleEvent(e) {
+		if (e.key === "Enter") {
+			setlist([...list, e.target.value]);
+		}
+	}
 	return (
 		<div className="box position-relative p-4">
 			<div className="box-row  p-2">
-				<h3>{props.name}</h3>
+				{/* <h3>{props.name}</h3>
 
 				<span>
 					<a href="https://www.freecodecamp.org/learn/">https://www.freecodecamp.org/learn/</a>
@@ -35,7 +41,23 @@ export const Box = props => {
 							Completed
 						</label>
 					</div>
-				</div>
+				</div> */}
+                <ul className="list-group list-group-flus">
+					{list.map((item, index) => {
+						return (
+							<li className="list-group-item " key={index}>
+								{item}{" "}
+								<button
+									className="btn btn-danger"
+									onClick={() => removeItem(index)}>
+									X
+								</button>
+							</li>
+						);
+					})}
+
+					<p>{list.length + "   item left"}</p>
+				</ul>
 			</div>
 			<div className="box-row row2 p-2 position-absolute bottom-0 start-50 translate-middle-x">
 				<div className="mb-3 row">
