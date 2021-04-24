@@ -18,26 +18,9 @@ import random
 import smtplib
 api = Blueprint('api', __name__)
 
-app.config["JWT_SECRET_KEY"] = "super-secret"  # TOKEN
-jwt = JWTManager(app)  #TOKEN
 
-app.url_map.strict_slashes = False
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_CONNECTION_STRING')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-MIGRATE = Migrate(app, db)
-db.init_app(app)
-CORS(app)
-setup_admin(app)
 
-# Handle/serialize errors like a JSON object
-@app.errorhandler(APIException)
-def handle_invalid_usage(error):
-    return jsonify(error.to_dict()), error.status_code
-
-# generate sitemap with all your endpoints
-@app.route('/')
-def sitemap():
-    return generate_sitemap(app)
+#esto no va aqui
 
 @api.route('/register', methods=['POST'])
 def handle_register():
@@ -83,7 +66,7 @@ def handle_register():
 
     return jsonify(response_body), 200
 
-@app.route('/login', methods=['POST'])
+@api.route('/login', methods=['POST'])
 def login():
     email=request.json.get('email', None)
     password=request.json.get('password', None)
@@ -116,6 +99,15 @@ def login():
 
     return jsonify('The login has been successful.', {'token':access_token, 'user_id':user.id}),200
 
+#debuggin route
+@api.route("/user_identity", methods=["GET"])
+@jwt_required()
+def protected():
+    
+    # We can now access our sqlalchemy User object via `current_user`.
+    return jsonify("funcionando correctamente")
+
+
 def mail(asunto,mensaje,correo):
     email='emailproyecto2021@gmail.com'
     message=mensaje
@@ -129,7 +121,7 @@ def mail(asunto,mensaje,correo):
     server.sendmail(email,correo,message)
     server.quit
 #-----------------------------
-@app.route('/forgot',methods=['POST'])
+@api.route('/forgot',methods=['POST'])
 def restore_password():
     if request.method == 'POST':
         body = request.get_json()
@@ -148,7 +140,7 @@ def restore_password():
         db.session.commit()
         return jsonify({'status':'Success','msg':'The code has been send'}),200
 #---------------------------------------------
-@app.route('/users/recovery/<string:email>',methods=['POST'])
+@api.route('/users/recovery/<string:email>',methods=['POST'])
 def user_verification(email):
     body=request.get_json()
     codigo=body.get('code')
@@ -162,7 +154,7 @@ def user_verification(email):
     else:
         return jsonify({"status":"failed","msg":"Code is not correct"}),404
 
-@app.route('/users/actualizarcontrasena/<int:id>',methods=['PUT'])
+@api.route('/users/actualizarcontrasena/<int:id>',methods=['PUT'])
 def pass_update(id):
     body=request.get_json()
     password=body.get("password")
