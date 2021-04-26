@@ -8,7 +8,7 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Careerpath
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash ##HASH
 from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required ##TOKEN
@@ -177,4 +177,25 @@ def pass_update(id):
     db.session.add(user)
     db.session.commit()
     return jsonify({"status":"succed","msg":"password updated properly"}),200
+
+
+@api.route('/careerpath/all', methods=['GET'])
+def api_all():
+    careerpaths = Careerpath.query.all()
+    careerpaths = list(map(lambda x:x.serialize(), careerpaths))
+#     careerpath = [
+#     {'id': 0,
+#      'name': 'Front-End Developer',
+#      'skills': 'HTML5, CSS, Javascript, React, Angular, JQuery, Bootstrap'
+#      },
+#     {'id': 1,
+#      'name': 'Back-End Developer',
+#      'skills': 'Java, Python, Node, Ruby, .Net, SQL, Apache, IIS Servers'
+#      },
+#     {'id': 2,
+#      'name': 'Mobile Developer',
+#      'skills': 'Java, React Native, REST'
+#      }
+# ]
+    return jsonify(careerpaths)
 

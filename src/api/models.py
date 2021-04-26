@@ -30,7 +30,7 @@ class User(db.Model):
                     back_populates="user") # this line is so it updates the field when Sister is updated
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.name
 
     def serialize(self):
         return {
@@ -49,6 +49,17 @@ class Careerpath(db.Model):
                     secondary=career_skills_table,
                     back_populates="careerpath")
 
+    def __repr__(self):
+        return '<Careerpath %r>' % self.name
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name
+            # "skill": self.skill,
+            # do not serialize the password, its a security breach
+        }
+
 
 class Skill(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -59,6 +70,9 @@ class Skill(db.Model):
     careerlink = db.relationship("Careerlink",
                     secondary=skills_link_table ,
                     back_populates="skill")
+
+    def __repr__(self):
+        return '<Skill %r>' % self.name
 
 
 class Careerlink(db.Model):
