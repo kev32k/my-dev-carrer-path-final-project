@@ -108,7 +108,7 @@ export const LearningPathView = () => {
 							<Box name="js view" />
 						</div>
 						<div
-							className={activeLinkIndex === 2 ? "tab-pane fade show active" : "tab-pane fade"}
+							className={activeLinkIndex === 3 ? "tab-pane fade show active" : "tab-pane fade"}
 							// className="tab-pane fade"
 							id="v-pills-settings"
 							role="tabpanel"

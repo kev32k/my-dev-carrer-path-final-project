@@ -96,7 +96,7 @@ export const Box = props => {
 					<h3>{item.name}</h3>
 
 					<span>
-						<a href="https://www.freecodecamp.org/learn/">{item.url}</a>
+						<a href={item.url}>{item.url}</a>
 					</span>
 					<div>
 						<div className="form-check form-check-inline">
