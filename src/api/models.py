@@ -20,7 +20,8 @@ skills_link_table = db.Table("skill_careerlink", db.metadata,
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
+    password = db.Column(db.String(250), unique=False, nullable=False)
+    name = db.Column(db.String(120), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     #careerlink = db.relationship("Careerlink", back_populates="user")
     careerlink = db.relationship("Careerlink", lazy=True)
