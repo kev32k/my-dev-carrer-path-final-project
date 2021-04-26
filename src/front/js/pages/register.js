@@ -19,14 +19,7 @@ export const Register = () => (
 					</strong>
 				</h1>
 				<label className="sr-only">Name </label>
-				<input
-					type="email"
-					id="name"
-					className="form-control mt-5"
-					placeholder="Your Name"
-					required
-					autoFocus
-				/>
+				<input type="name" id="name" className="form-control mt-5" placeholder="Your Name" required autoFocus />
 				<label className="sr-only">Email </label>
 				<input
 					type="email"
