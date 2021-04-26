@@ -18,26 +18,9 @@ import random
 import smtplib
 api = Blueprint('api', __name__)
 
-app.config["JWT_SECRET_KEY"] = "super-secret"  # TOKEN
-jwt = JWTManager(app)  #TOKEN
 
-app.url_map.strict_slashes = False
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_CONNECTION_STRING')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-MIGRATE = Migrate(app, db)
-db.init_app(app)
-CORS(app)
-setup_admin(app)
 
-# Handle/serialize errors like a JSON object
-@app.errorhandler(APIException)
-def handle_invalid_usage(error):
-    return jsonify(error.to_dict()), error.status_code
-
-# generate sitemap with all your endpoints
-@app.route('/')
-def sitemap():
-    return generate_sitemap(app)
+#esto no va aqui
 
 @api.route('/register', methods=['POST'])
 def handle_register():
@@ -54,7 +37,7 @@ def handle_register():
     if not password:
         error_messages.append({"msg":"Password required"}), 400
     if not name:
-        error_messages.append({"msg":"Name required"}), 400
+       error_messages.append({"msg":"Name required"}), 400
     if len(error_messages) >0:
         return jsonify(error_messages),400
 
@@ -66,7 +49,7 @@ def handle_register():
     if len(error_messages) >0:
         return jsonify(error_messages),400
 
-    existing_user_email = User.query.filter_by(email=email, password=password).first()
+    existing_user_email = User.query.filter_by(email=email,name=name, password=password).first()
 
     if existing_user_email:
         error_messages.append({"msg":"This email already exists."}), 400
@@ -76,14 +59,14 @@ def handle_register():
     #generating hash
     encrypted_password=generate_password_hash(password)
 
-    user=User(email=email, password=encrypted_password, name=name, is_active=True)
+    user=User(email=email, password=password,name=name,is_active=True)
 
-    #db.session.add(user)
-    #db.session.commit()
+    db.session.add(user)
+    db.session.commit()
 
-    return jsonify(response_body), 200
+    return jsonify("Aqui estamos"), 200
 
-@app.route('/login', methods=['POST'])
+@api.route('/login', methods=['POST'])
 def login():
     email=request.json.get('email', None)
     password=request.json.get('password', None)
@@ -100,21 +83,36 @@ def login():
         return jsonify(error_mesages_request),400
     #searching the user
     error_messages_userInfo=[]
-    user = User.query.filter_by(email=email).first()
-    if not user:
-        #user not found
-        error_messages_userInfo.append({'msg': 'Bad email or password'})
-        return jsonify(error_messages_userInfo),401
-    if not check_password_hash(user.password,password):
-        error_messages_userInfo.append({'msg': 'Bad password'})
-        return jsonify(error_messages_userInfo),401
+    try:
+        user = User.query.filter_by(email=email, password=password).first()
+        expiration = datetime.timedelta(days=1)
+        access_token = create_access_token(identity=user.id, expires_delta=expiration)
+        return jsonify('The login has been successful.', {'token':access_token, 'user_id':user.id}),200
+    except:
+        return jsonify("Bad Username or password"),401
+    # if not user:
+    #     #user not found
+    #     error_messages_userInfo.append({'msg': 'Bad email or password'})
+    #     return jsonify(error_messages_userInfo),401
+    # if not check_password_hash(user.password,password):
+    #     error_messages_userInfo.append({'msg': 'Bad password'})
+    #     return jsonify(error_messages_userInfo),401
     
      #set expiry period
-    expiration = datetime.timedelta(days=1)
+    #expiration = datetime.timedelta(days=1)
     #create token
-    access_token = create_access_token(identity=user.id, expires_delta=expiration)
+    #access_token = create_access_token(identity=user.id, expires_delta=expiration)
 
-    return jsonify('The login has been successful.', {'token':access_token, 'user_id':user.id}),200
+    #return jsonify('The login has been successful.', {'token':access_token, 'user_id':user.id}),200
+
+#debuggin route
+@api.route("/user_identity", methods=["GET"])
+@jwt_required()
+def protected():
+    
+    # We can now access our sqlalchemy User object via `current_user`.
+    return jsonify("funcionando correctamente")
+
 
 def mail(asunto,mensaje,correo):
     email='emailproyecto2021@gmail.com'
@@ -129,7 +127,7 @@ def mail(asunto,mensaje,correo):
     server.sendmail(email,correo,message)
     server.quit
 #-----------------------------
-@app.route('/forgot',methods=['POST'])
+@api.route('/forgot',methods=['POST'])
 def restore_password():
     if request.method == 'POST':
         body = request.get_json()
@@ -148,7 +146,7 @@ def restore_password():
         db.session.commit()
         return jsonify({'status':'Success','msg':'The code has been send'}),200
 #---------------------------------------------
-@app.route('/users/recovery/<string:email>',methods=['POST'])
+@api.route('/users/recovery/<string:email>',methods=['POST'])
 def user_verification(email):
     body=request.get_json()
     codigo=body.get('code')
@@ -162,7 +160,7 @@ def user_verification(email):
     else:
         return jsonify({"status":"failed","msg":"Code is not correct"}),404
 
-@app.route('/users/actualizarcontrasena/<int:id>',methods=['PUT'])
+@api.route('/users/actualizarcontrasena/<int:id>',methods=['PUT'])
 def pass_update(id):
     body=request.get_json()
     password=body.get("password")
