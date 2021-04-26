@@ -185,9 +185,9 @@ def api_all():
     careerpaths = list(map(lambda x:x.serialize(), careerpaths))
 #     careerpath = [
 #     {'id': 0,
-#      'name': 'Front-End Developer',
-#      'skills': 'HTML5, CSS, Javascript, React, Angular, JQuery, Bootstrap'
+#      'name': 'Front-End Developer',React, Angular, JQuery, Bootstrap'
 #      },
+#      'skills': 'HTML5, CSS, Javascript, 
 #     {'id': 1,
 #      'name': 'Back-End Developer',
 #      'skills': 'Java, Python, Node, Ruby, .Net, SQL, Apache, IIS Servers'
@@ -198,4 +198,29 @@ def api_all():
 #      }
 # ]
     return jsonify(careerpaths)
+
+    @api.route('/learningpathview', methods=['POST'])
+    @jwt_required()
+    def add_course():
+        current_user = get_jwt_identity()
+    user = User.query.filter_by(id=current_user).first()
+    if not user:
+        return jsonify({"msg":"You are not a no registered user"}),401
+    newCareerLink = request.get_json()
+    # No empty requests
+    if newCareerLink == []:
+        return jsonify("Empty request"),404
+    careerLinks = CareerLink.query.filter_by(user_id=user.id) 
+    existing_careerlink = list(map(lambda CareerLink: CareerLink.serialize(), careerLinks))
+    message_to_avoid_repetition=[]
+    for items in existing_careerlink:
+        if items['url'] is not None and newCareerLink['url'] == items['url']: 
+            message_to_avoid_repetition.append('Item already added')    
+    if len(message_to_avoid_repetition) > 0:  
+        return jsonify(message_to_avoid_repetition),400 #### the list is return in case of having any message
+    # create new course 
+    newCareerLinkItem=CareerLink(user_id=user.id,url=newCareerLink['url'])
+    db.session.add(newCareerLinkItem)
+    db.session.commit()
+    return jsonify(newCareerLink), 200
 

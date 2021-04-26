@@ -78,7 +78,12 @@ class Skill(db.Model):
 class Careerlink(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
+    #url = db.Column(db.String(120), unique=True, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
     skill = db.relationship("Skill",
                     secondary=skills_link_table ,
                     back_populates="careerlink")
+
+
+
+        
