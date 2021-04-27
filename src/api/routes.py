@@ -186,7 +186,7 @@ def api_all():
     careerpaths = [
     {'id': 0,
     'img':'{frontEndUrl}',
-     'name': 'Back-End Developer',
+     'name': 'Front-End Developer',
      'skills': 'HTML5, CSS, Javascript'
      
      },

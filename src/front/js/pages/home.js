@@ -15,9 +15,9 @@ export const Home = () => {
 	const [cargo, setCargo] = useState(false);
 	const [course, setCourse] = useState([]);
 
-	setInterval(() => {
-		store.careerpaths.length > 0 ? setCargo(true) : "";
-	}, 5000);
+	// setInterval(() => {
+	// 	store.careerpaths.length > 0 ? setCargo(true) : "";
+	// }, 5000);
 
 	console.log("front");
 	// console.log(store.careerpaths[0]);
@@ -44,18 +44,18 @@ export const Home = () => {
 			.catch(error => console.log(error));
 	}, []);
 
-	if (store.careerpaths[0] === undefined) {
-		console.log("waiting");
-	} else {
-		console.log("ready");
-		var imgItem = store.careerpaths[0].img;
-		console.log(imgItem);
-	}
+	// if (store.careerpaths[0] === undefined) {
+	// 	console.log("waiting");
+	// } else {
+	// 	console.log("ready");
+	// 	var imgItem = store.careerpaths[0].img;
+	// 	console.log(imgItem);
+	// }
 
 	return (
 		<div>
 			<Hero />
-			<div className="row d-flex justify-content-center mt-5">
+			<div className="container">
 				{/* <Card
 						img={frontEndUrl}
 						name="Front-End Developer"
@@ -74,16 +74,31 @@ export const Home = () => {
 						content="Get started as an Android / Apple app developer.
 	                    Add your online courses on Java, React Native, REST."
 					/> */}
-				<div>
-					<Card
+
+				{store.careerpaths ? (
+					<div className="newOverflow">
+						{store.careerpaths.map((item, index) => {
+							return (
+								<div key={index}>
+									<div className="card-box">
+										<Card name={item.name} />
+									</div>
+								</div>
+							);
+						})}
+					</div>
+				) : (
+					console.log("loading")
+				)}
+				{/* <Card
 						img={backEndUrl}
 						// name={store.careerpaths[0].name}
 						content="Get started as a back-end web developer.
 	                    Add your online courses on Java, Python, Node, Ruby, .Net, SQL, Apache and IIS Servers."
-					/>
+					/> */}
 
-					{/* <Card name={store.careerpaths[0].name} /> */}
-					{/* {cargo ? (
+				{/* <Card name={store.careerpaths[0].name} /> */}
+				{/* {cargo ? (
 
 								{store.careerpaths.map((item, index) => {
 									return (
@@ -98,30 +113,28 @@ export const Home = () => {
 						) : (
 							" "
 						)} */}
-				</div>
 			</div>
-			<div className="container">
-				<div className="feature-title text-center mt-5">
-					<h3>⭐ Editor Pick: Our Favorite Online Course of the Month ⭐</h3>
-				</div>
 
-				<div className="feature_card">
-					<div className=" mt-5">
-						<h5 className="card-header">Featured Course</h5>
-						<div className="card-body">
-							<h5 className="card-title">{course.title}</h5>
-							<img src={course.image_480x270} />
-							<p className="card-text">
-								Understand React Native v0.62.2 with Hooks, Context, and React Navigation.
-							</p>
-							<a
-								href={"https://www.udemy.com" + course.url}
-								className="btn btn-primary mb-5"
-								target="_blank"
-								rel="noopener noreferrer">
-								Go to Course
-							</a>
-						</div>
+			<div className="feature-title text-center mt-5">
+				<h3>⭐ Editor Pick: Our Favorite Online Course of the Month ⭐</h3>
+			</div>
+
+			<div className="feature_card">
+				<div className=" mt-5">
+					<h5 className="card-header">Featured Course</h5>
+					<div className="card-body">
+						<h5 className="card-title">{course.title}</h5>
+						<img src={course.image_480x270} />
+						<p className="card-text">
+							Understand React Native v0.62.2 with Hooks, Context, and React Navigation.
+						</p>
+						<a
+							href={"https://www.udemy.com" + course.url}
+							className="btn btn-primary mb-5"
+							target="_blank"
+							rel="noopener noreferrer">
+							Go to Course
+						</a>
 					</div>
 				</div>
 			</div>
