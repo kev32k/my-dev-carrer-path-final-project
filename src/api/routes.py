@@ -8,7 +8,9 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Careerpath
+
+from api.models import db, User, CareerpathName, SkillName, CareerLink
+
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash ##HASH
 from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required ##TOKEN
