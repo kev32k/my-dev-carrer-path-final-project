@@ -181,22 +181,22 @@ def pass_update(id):
 
 @api.route('/careerpath/all', methods=['GET'])
 def api_all():
-    careerpaths = Careerpath.query.all()
-    careerpaths = list(map(lambda x:x.serialize(), careerpaths))
-#     careerpath = [
-#     {'id': 0,
-#      'name': 'Front-End Developer',React, Angular, JQuery, Bootstrap'
-#      },
-#      'skills': 'HTML5, CSS, Javascript, 
-#     {'id': 1,
-#      'name': 'Back-End Developer',
-#      'skills': 'Java, Python, Node, Ruby, .Net, SQL, Apache, IIS Servers'
-#      },
-#     {'id': 2,
-#      'name': 'Mobile Developer',
-#      'skills': 'Java, React Native, REST'
-#      }
-# ]
+    # careerpaths = Careerpath.query.all()
+    # careerpaths = list(map(lambda x:x.serialize(), careerpaths))
+    careerpaths = [
+    {'id': 0,
+     'name': 'Back-End Developer',
+     'skills': 'HTML5, CSS, Javascript'
+     },
+    {'id': 1,
+     'name': 'Back-End Developer',
+     'skills': 'Java, Python, Node, Ruby, .Net, SQL, Apache, IIS Servers'
+     },
+    {'id': 2,
+     'name': 'Mobile Developer',
+     'skills': 'Java, React Native, REST'
+     }
+]
     return jsonify(careerpaths)
 
     @api.route('/learningpathview', methods=['POST'])
