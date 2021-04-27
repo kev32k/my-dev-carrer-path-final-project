@@ -4,7 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			bearer_token: "",
 			login: false,
 			careerpaths: [],
-			name: ""
+			name: "",
+			current_career_path_id: 1
 		},
 
 		actions: {
@@ -63,6 +64,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			save_username: name => {
 				setStore({ name: name });
+			},
+			current_career_id: id => {
+				//1 2 3 fe be mobile
+				setStore({ current_career_path_id: id });
 			}
 		}
 	};

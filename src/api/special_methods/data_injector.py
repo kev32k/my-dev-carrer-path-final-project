@@ -28,8 +28,9 @@ def upload_careers():
             db.session.commit()
 
 def upload_skills():
+    print("aqui estoy")
     list_skills = SkillName.getAllSkills()
-    if (list_skills==0):
+    if len(list_skills)==0:
         list_new_skills = [
             {
                 "careerpath_name_id": 1,
@@ -106,6 +107,7 @@ def upload_skills():
         ]
         
         for item in range (len(list_new_skills)):
+            
             body = list_new_skills[item]
             skill_name_item = SkillName()
             skill_name_item.careerpath_name_id = body['careerpath_name_id']
