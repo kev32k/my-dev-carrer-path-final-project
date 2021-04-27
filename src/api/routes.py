@@ -11,6 +11,8 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 
 from api.models import db, User, CareerpathName, SkillName, CareerLink
 
+from .special_methods.data_injector import upload_careers,upload_skills
+
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash ##HASH
 from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required ##TOKEN
@@ -20,7 +22,10 @@ import random
 import smtplib
 api = Blueprint('api', __name__)
 
-
+@api.before_app_first_request
+def main_load():
+    upload_careers()
+    upload_skills()
 
 #esto no va aqui
 

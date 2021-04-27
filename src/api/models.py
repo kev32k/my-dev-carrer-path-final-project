@@ -48,13 +48,18 @@ class CareerpathName(db.Model):
     careerpath_name = db.Column(db.String(120), unique=True, nullable=False)
     skill_dependency=db.relationship('SkillName',backref='careerpathname',lazy=True)
 
+    def getAllCareers():
+        list_careers = CareerpathName.query.all()
+        list_careers = list(map(lambda x: x.serialize(), list_careers))
+        return(list_careers)
+
     def __repr__(self):
-        return '<Careerpathname %r>' % self.name
+        return '<CareerpathName %r>' % self.careerpath_name
 
     def serialize(self):
         return {
             "id": self.id,
-            "name": self.name
+            "name": self.careerpath_name
             # "skill": self.skill,
             # do not serialize the password, its a security breach
         }
@@ -65,8 +70,13 @@ class SkillName(db.Model):
     skill_name = db.Column(db.String(120), unique=True, nullable=False)
     user_dependency=db.relationship('CareerLink',backref='skillname',lazy=True)
 
+    def getAllSkills():
+        list_skills = SkillName.query.all()
+        list_skills = list(map(lambda x: x.serialize(), list_skills))
+        return(list_skills)
+
     def __repr__(self):
-        return '<Skillname %r>' % self.name
+        return '<Skillname %r>' % self.skill_name
 
     def serialize(self):
         return {
