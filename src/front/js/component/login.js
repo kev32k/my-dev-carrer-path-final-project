@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import { Route, Link, Switch, Redirect } from "react-router-dom";
 import "../../styles/index.scss";
 import "../../styles/login.scss";
 import wizardImageUrl from "../../img/wizard-big.png";
@@ -6,8 +7,10 @@ import varitaImageUrl from "../../img/varita.png";
 import { Button } from "./button";
 
 export const Login = () => {
-	const [email, setEmail] = userState("");
-	const [password, setPassword] = userState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [name, setName] = useState("");
+	const [auth, setAuth] = useState(false);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -24,7 +27,7 @@ export const Login = () => {
 				"Content-Type": "application/json"
 			}
 		})
-			.then((res = res.json()))
+			.then(res => res.json())
 			.then(data => {
 				console.log(data);
 				setAuth(true);
@@ -35,7 +38,7 @@ export const Login = () => {
 	return (
 		<div className="container">
 			<div className="form-container">
-				<form>
+				<form onSubmit={handleSubmit}>
 					<div className="text-center">
 						<img src={varitaImageUrl} />
 					</div>
@@ -44,6 +47,8 @@ export const Login = () => {
 					<label className="sr-only">Email </label>
 					<input
 						type="email"
+						value={email}
+						onChange={event => setEmail(event.target.value)}
 						id="emailAddress"
 						className="form-control mt-5"
 						placeholder="Email Address"
@@ -54,6 +59,7 @@ export const Login = () => {
 					<input
 						type="password"
 						id="passwords"
+						onChange={event => setPassword(event.target.value)}
 						className="form-control mt-4"
 						placeholder="Password"
 						required
@@ -74,6 +80,7 @@ export const Login = () => {
 					</div>
 				</form>
 			</div>
+			{auth ? <Redirect to="/userdashboard" /> : null}
 		</div>
 	);
 };
