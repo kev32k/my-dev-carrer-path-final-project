@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 export const Box = props => {
+	const { store, actions } = useContext(Context);
 	const [list, setList] = useState([]);
 	const [name, setName] = useState("");
 	const [url, setUrl] = useState("");

@@ -2,10 +2,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			bearer_token: "",
-			login: false
+			login: false,
+			careerpaths: []
 		},
 
 		actions: {
+			// fetch("https://assets.breatheco.de/apis/fake/todos/user/jorgebeto")
+			// .then(response => response.json())
+			//     .then(result => setlist(result))
+			//     .catch(error => console.log("error", error));
+
+			// .then(result => {
+			//         console.log(result);
+			//         setStore(result);
+			//     })
+
+			async fetchCareerPaths() {
+				const store = getStore();
+				await fetch(process.env.BACKEND_URL + "/api/careerpath/all")
+					.then(response => response.json())
+					.then(result => {
+						console.log("api");
+						console.log(result);
+						setStore({ careerpaths: result });
+						console.log("list");
+						console.log(store.careerpaths[0].img);
+					})
+					.catch(error => console.log("error", error));
+			},
+
 			register_user: async (name, email, password) => {
 				const requestOptions = {
 					method: "POST",
