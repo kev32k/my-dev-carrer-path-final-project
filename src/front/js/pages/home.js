@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
+import { useParams } from "react-router-dom";
 import frontEndUrl from "../../img/front-end-main.jpeg";
 import backEndUrl from "../../img/back-end.jpg";
 import mobileUrl from "../../img/mobile-appp-dev.jpg";
@@ -10,7 +11,17 @@ import { Card } from "../component/card";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+	const { id } = useParams();
+	const [cargo, setCargo] = useState(false);
 	const [course, setCourse] = useState([]);
+
+	setInterval(() => {
+		store.careerpaths.length > 0 ? setCargo(true) : "";
+	}, 5000);
+
+	console.log("front");
+	// console.log(store.careerpaths[0]);
+	//console.log(store.careerpaths[0].name);
 
 	useEffect(() => {
 		fetch("https://www.udemy.com/api-2.0/courses/959700/", {
@@ -33,28 +44,61 @@ export const Home = () => {
 			.catch(error => console.log(error));
 	}, []);
 
+	if (store.careerpaths[0] === undefined) {
+		console.log("waiting");
+	} else {
+		console.log("ready");
+		var imgItem = store.careerpaths[0].img;
+		console.log(imgItem);
+	}
+
 	return (
 		<div>
 			<Hero />
 			<div className="row d-flex justify-content-center mt-5">
-				<Card
-					img={frontEndUrl}
-					name="Front-End Developer"
-					content="Get started as a front-end web developer. 
-                    Add your online courses on HTML, CSS, Javascript, React, Angular, JQuery, and Bootstrap."
-				/>
-				<Card
-					img={backEndUrl}
-					name="Back-End Developer"
-					content="Get started as a back-end web developer. 
-                    Add your online courses on Java, Python, Node, Ruby, .Net, SQL, Apache and IIS Servers."
-				/>
-				<Card
-					img={mobileUrl}
-					name="Mobile Developer"
-					content="Get started as an Android / Apple app developer. 
-                    Add your online courses on Java, React Native, REST."
-				/>
+				{/* <Card
+						img={frontEndUrl}
+						name="Front-End Developer"
+						content="Get started as a front-end web developer.
+	                    Add your online courses on HTML, CSS, Javascript, React, Angular, JQuery, and Bootstrap."
+					/>
+					<Card
+						img={backEndUrl}
+						name="Back-End Developer"
+						content="Get started as a back-end web developer.
+	                    Add your online courses on Java, Python, Node, Ruby, .Net, SQL, Apache and IIS Servers."
+					/>
+					<Card
+						img={mobileUrl}
+						name="Mobile Developer"
+						content="Get started as an Android / Apple app developer.
+	                    Add your online courses on Java, React Native, REST."
+					/> */}
+				<div>
+					<Card
+						img={backEndUrl}
+						// name={store.careerpaths[0].name}
+						content="Get started as a back-end web developer.
+	                    Add your online courses on Java, Python, Node, Ruby, .Net, SQL, Apache and IIS Servers."
+					/>
+
+					{/* <Card name={store.careerpaths[0].name} /> */}
+					{/* {cargo ? (
+
+								{store.careerpaths.map((item, index) => {
+									return (
+										<div key={index}>
+											<div className="box">
+												<Card img={item.img} name={item.name} content={item.skills} pos={index} />
+											</div>
+										</div>
+									);
+								})}
+
+						) : (
+							" "
+						)} */}
+				</div>
 			</div>
 			<div className="container">
 				<div className="feature-title text-center mt-5">

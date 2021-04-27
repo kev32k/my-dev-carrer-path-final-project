@@ -185,14 +185,18 @@ def api_all():
     # careerpaths = list(map(lambda x:x.serialize(), careerpaths))
     careerpaths = [
     {'id': 0,
+    'img':'{frontEndUrl}',
      'name': 'Back-End Developer',
      'skills': 'HTML5, CSS, Javascript'
+     
      },
     {'id': 1,
+    'img':'{frontEndUrl}',
      'name': 'Back-End Developer',
      'skills': 'Java, Python, Node, Ruby, .Net, SQL, Apache, IIS Servers'
      },
     {'id': 2,
+    'img':'{frontEndUrl}',
      'name': 'Mobile Developer',
      'skills': 'Java, React Native, REST'
      }
