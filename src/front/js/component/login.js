@@ -30,6 +30,7 @@ export const Login = () => {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data);
+				sessionStorage.setItem("token", data[1].token);
 				setAuth(true);
 			})
 			.catch(err => console.log(err));
