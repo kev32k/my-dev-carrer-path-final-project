@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			bearer_token: "",
 			login: false,
-			careerpaths: []
+			careerpaths: [],
+			name: ""
 		},
 
 		actions: {
@@ -58,6 +59,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (store.bearer_token.length > 0) {
 					setStore({ login: true });
 				}
+			},
+
+			save_username: name => {
+				setStore({ name: name });
 			}
 		}
 	};

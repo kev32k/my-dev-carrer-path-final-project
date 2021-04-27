@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Route, Link, Switch, Redirect } from "react-router-dom";
 import "../../styles/index.scss";
 import "../../styles/login.scss";
 import wizardImageUrl from "../../img/wizard-big.png";
 import varitaImageUrl from "../../img/varita.png";
 import { Button } from "./button";
+import { Context } from "../store/appContext";
 
 export const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [name, setName] = useState("");
 	const [auth, setAuth] = useState(false);
+	const { store, actions } = useContext(Context);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -31,9 +33,13 @@ export const Login = () => {
 			.then(data => {
 				console.log(data);
 				sessionStorage.setItem("token", data[1].token);
+				actions.save_username(data[1].name);
 				setAuth(true);
 			})
-			.catch(err => console.log(err));
+			.catch(err => {
+				console.log(err);
+				alert(err[0].msg);
+			});
 	};
 
 	return (

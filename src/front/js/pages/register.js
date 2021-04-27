@@ -32,7 +32,13 @@ export const Register = () => {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data);
-				setAuth(true);
+				if (data[0].msg) {
+					alert(data[0].msg);
+				}
+
+				if (data == "user created") {
+					setAuth(true);
+				}
 			})
 			.catch(err => console.log(err));
 	};

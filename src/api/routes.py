@@ -64,7 +64,7 @@ def handle_register():
     db.session.add(user)
     db.session.commit()
 
-    return jsonify("Aqui estamos"), 200
+    return jsonify("user created"), 200
 
 @api.route('/login', methods=['POST'])
 def login():
@@ -87,7 +87,7 @@ def login():
         user = User.query.filter_by(email=email, password=password).first()
         expiration = datetime.timedelta(days=1)
         access_token = create_access_token(identity=user.id, expires_delta=expiration)
-        return jsonify('The login has been successful.', {'token':access_token, 'user_id':user.id}),200
+        return jsonify('The login has been successful.', {'token':access_token, 'user_id':user.id, 'name':user.name}),200
     except:
         return jsonify("Bad Username or password"),401
     # if not user:
