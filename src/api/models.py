@@ -72,4 +72,15 @@ class CareerLink (db.Model):
     skill_id = db.Column (db.Integer,db.ForeignKey(SkillName.id))
     course_name= db.Column (db.String(120),nullable=False)
     course_link= db.Column (db.String(120),nullable=False)
+
+    def serialize(self):
+        return {
+            "skill":self.skill_id,
+            "name": self.course_name,
+            "url": self.course_link
+        }
     
+    def getAllCareersLink():
+        list_careerslink = CareerLink.query.all()
+        list_careerslink = list(map(lambda x: x.serialize(), list_careerslink))
+        return(list_careerslink)
