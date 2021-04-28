@@ -113,9 +113,13 @@ export const Front_End_Box = props => {
 						<div className="input-group mb-3">
 							<select className="custom-select form-control" id="inputGroupSelect01 inputSkill">
 								<option selected>Select a skill....</option>
-								<option value="1">HTML5</option>
-								<option value="2">CSS</option>
-								<option value="3">Javascript</option>
+								{store.front_end_skills.map((item, index) => {
+									return (
+										<option key={index} value={index}>
+											{item.name}
+										</option>
+									);
+								})}
 							</select>
 						</div>
 					</div>

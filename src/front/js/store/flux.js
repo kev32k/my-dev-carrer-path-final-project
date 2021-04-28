@@ -1,24 +1,19 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			global_url: "https://3001-red-xerinae-zapfx33r.ws-us03.gitpod.io/",
 			bearer_token: "",
 			login: false,
 			careerpaths: [],
 			name: "",
-			current_career_path_id: 1
+			current_career_path_id: 1, //TODO eliminar esta variable
+			all_skills: [],
+			front_end_skills: [],
+			back_end_skills: [],
+			mobile_skills: []
 		},
 
 		actions: {
-			// fetch("https://assets.breatheco.de/apis/fake/todos/user/jorgebeto")
-			// .then(response => response.json())
-			//     .then(result => setlist(result))
-			//     .catch(error => console.log("error", error));
-
-			// .then(result => {
-			//         console.log(result);
-			//         setStore(result);
-			//     })
-
 			async fetchCareerPaths() {
 				const store = getStore();
 				await fetch(process.env.BACKEND_URL + "/api/careerpath/all")
@@ -68,6 +63,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 			current_career_id: id => {
 				//1 2 3 fe be mobile
 				setStore({ current_career_path_id: id });
+			},
+			get_all_skills: async () => {
+				const store = getStore();
+				const requestOptions = {
+					method: "GET",
+					headers: { "Content-Type": "application/json" }
+				};
+
+				const result = await fetch(store.global_url + "api/skill/all", requestOptions)
+					.then(response => response.json())
+					.then(data => {
+						console.log("mi madre el bicho");
+						setStore({ all_skills: data });
+						console.log(store.all_skills);
+					});
+			},
+			sort_skills: () => {
+				const store = getStore();
+				let temp_front_end_skills = [];
+				let temp_back_end_skills = [];
+				let temp_mobile_skills = [];
+				if (store.all_skills) {
+					store.all_skills.map((item, index) => {
+						if (index >= 0 && index < 7) {
+							temp_front_end_skills.push(item);
+						}
+						if (index >= 7 && index < 15) {
+							temp_back_end_skills.push(item);
+						}
+						if (index >= 15 && index <= 17) {
+							temp_mobile_skills.push(item);
+						}
+					});
+					setStore({ front_end_skills: temp_front_end_skills });
+					setStore({ back_end_skills: temp_back_end_skills });
+					setStore({ mobile_skills: temp_mobile_skills });
+					console.log(store.front_end_skills);
+					console.log(store.back_end_skills);
+					console.log(store.mobile_skills);
+				}
 			}
 		}
 	};
