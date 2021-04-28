@@ -87,7 +87,7 @@ export const Login = () => {
 					</div>
 				</form>
 			</div>
-			{auth ? <Redirect to="/userdashboard" /> : null}
+			{auth ? <Redirect to="/learningpath" /> : null}
 		</div>
 	);
 };

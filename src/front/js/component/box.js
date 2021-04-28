@@ -16,6 +16,10 @@ export const Box = props => {
 		setUrl(event.target.value);
 	}
 
+	function handleChangeSkill(event) {
+		setSkill(event.target.value);
+	}
+
 	function handleAdd() {
 		const newList = list.concat({ name, url });
 
@@ -23,7 +27,7 @@ export const Box = props => {
 	}
 
 	return (
-		<div className="box p-4">
+		<div className=" p-4">
 			<h3>{props.name}</h3>
 
 			{/* <div className="box-row  p-2">
@@ -125,13 +129,25 @@ export const Box = props => {
 								Completed
 							</label>
 						</div>
+						<div className="form-check form-check-inline">
+							<input
+								className="form-check-input"
+								type="radio"
+								name="inlineRadioOptions"
+								id="inlineRadio2"
+								value="option2"
+							/>
+							<label className="form-check-label" htmlFor="inlineRadio2">
+								Not started yet
+							</label>
+						</div>
 					</div>
 				</div>
 			))}
 			<div className="box-row row2 my-2 p-2 position-relative">
 				<div className="mb-3 row">
 					<label htmlFor="inputName" className="col-sm-2 col-form-label">
-						name
+						Course name
 					</label>
 					<div className="col-sm-10">
 						<input
@@ -145,7 +161,7 @@ export const Box = props => {
 				</div>
 				<div className="mb-3 row">
 					<label htmlFor="inputUrl" className="col-sm-2 col-form-label">
-						url
+						Course link
 					</label>
 					<div className="col-sm-10">
 						<input
@@ -155,6 +171,21 @@ export const Box = props => {
 							value={url}
 							onChange={handleChangeUrl}
 						/>
+					</div>
+				</div>
+				<div className="mb-3 row">
+					<label htmlFor="inputSkill" className="col-sm-2 col-form-label">
+						Course skill
+					</label>
+					<div className="col-sm-10">
+						<div className="input-group mb-3">
+							<select className="custom-select form-control" id="inputGroupSelect01 inputSkill">
+								<option selected>Select a skill....</option>
+								<option value="1">HTML5</option>
+								<option value="2">CSS</option>
+								<option value="3">Javascript</option>
+							</select>
+						</div>
 					</div>
 				</div>
 				<button

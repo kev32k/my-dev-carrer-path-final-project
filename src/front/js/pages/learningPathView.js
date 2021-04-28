@@ -83,7 +83,7 @@ export const LearningPathView = () => {
 						</div>
 					</div>
 
-					<div className="col ">
+					<div className="col box">
 						<div className="tab-content" id="v-pills-tabContent">
 							<div
 								className={activeLinkIndex === 0 ? "tab-pane fade show active" : "tab-pane fade"}
