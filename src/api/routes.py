@@ -188,50 +188,91 @@ def pass_update(id):
 
 @api.route('/careerpath/all', methods=['GET'])
 def api_all():
-    # careerpaths = Careerpath.query.all()
-    # careerpaths = list(map(lambda x:x.serialize(), careerpaths))
-    careerpaths = [
-    {'id': 0,
-    'img':'{frontEndUrl}',
-     'name': 'Front-End Developer',
-     'skills': 'HTML5, CSS, Javascript'
+    careerpaths = CareerpathName.query.all()
+    careerpaths = list(map(lambda x:x.serialize(), careerpaths))
+#     #careerpaths = [
+#     #{'id': 0,
+#     'img':'{frontEndUrl}',
+#      'name': 'Front-End Developer',
+#      'skills': 'HTML5, CSS, Javascript'
      
-     },
-    {'id': 1,
-    'img':'{frontEndUrl}',
-     'name': 'Back-End Developer',
-     'skills': 'Java, Python, Node, Ruby, .Net, SQL, Apache, IIS Servers'
-     },
-    {'id': 2,
-    'img':'{frontEndUrl}',
-     'name': 'Mobile Developer',
-     'skills': 'Java, React Native, REST'
-     }
-]
+#      },
+#     {'id': 1,
+#     'img':'{frontEndUrl}',
+#      'name': 'Back-End Developer',
+#      'skills': 'Java, Python, Node, Ruby, .Net, SQL, Apache, IIS Servers'
+#      },
+#     {'id': 2,
+#     'img':'{frontEndUrl}',
+#      'name': 'Mobile Developer',
+#      'skills': 'Java, React Native, REST'
+#      }
+# ]
     return jsonify(careerpaths)
 
-    @api.route('/learningpathview', methods=['POST'])
-    @jwt_required()
-    def add_course():
-        current_user = get_jwt_identity()
+# @api.route('/learningpathview/', methods=['GET'])
+# def api_skills():
+#     careerskills = Careerskills.query.all()
+#     careerskills = list(map(lambda x:x.serialize(), careerskills))
+#     return jsonify(careerskills)
+
+
+#---------------------------------------------------------------------
+    # @api.route('/learningpathview', methods=['POST'])
+    # @jwt_required()
+    # def add_course():
+    #     current_user = get_jwt_identity()
+    #     user = User.query.filter_by(id=current_user).first()
+    #     if not user:
+    #         return jsonify({"msg":"You are not a no registered user"}),401
+    #     newCareerLink = request.get_json()
+    #     # No empty requests
+    #     if newCareerLink == []:
+    #         return jsonify("Empty request"),404
+    #     careerLinks = CareerLink.query.filter_by(user_id=user.id) 
+    #     existing_careerlink = list(map(lambda CareerLink: CareerLink.serialize(), careerLinks))
+    #     message_to_avoid_repetition=[]
+    #     for items in existing_careerlink:
+    #         if items['url'] is not None and newCareerLink['url'] == items['url']: 
+    #             message_to_avoid_repetition.append('Item already added')    
+    #         if len(message_to_avoid_repetition) > 0:  
+    #             return jsonify(message_to_avoid_repetition),400 #### the list is return in case of having any message
+    #     # create new course 
+    #     newCareerLinkItem=CareerLink(name=name,url=newCareerLink['url'], skill=skill)
+    #     db.session.add(newCareerLinkItem)
+    #     db.session.commit()
+    # return jsonify(newCareerLink), 200
+
+@api.route('/learningpathview', methods=['POST'])
+@jwt_required()
+def add_course():
+    current_user = get_jwt_identity()
     user = User.query.filter_by(id=current_user).first()
     if not user:
         return jsonify({"msg":"You are not a no registered user"}),401
-    newCareerLink = request.get_json()
-    # No empty requests
-    if newCareerLink == []:
-        return jsonify("Empty request"),404
-    careerLinks = CareerLink.query.filter_by(user_id=user.id) 
-    existing_careerlink = list(map(lambda CareerLink: CareerLink.serialize(), careerLinks))
-    message_to_avoid_repetition=[]
-    for items in existing_careerlink:
-        if items['url'] is not None and newCareerLink['url'] == items['url']: 
-            message_to_avoid_repetition.append('Item already added')    
-    if len(message_to_avoid_repetition) > 0:  
-        return jsonify(message_to_avoid_repetition),400 #### the list is return in case of having any message
-    # create new course 
-    newCareerLinkItem=CareerLink(user_id=user.id,url=newCareerLink['url'])
-    db.session.add(newCareerLinkItem)
+    request_body = request.get_json()
+    course_name = request.json.get("name",None)
+    course_link = request.json.get("url", None)
+    skill_id = request.json.get("skill",None)
+    error_mesages_request=[]
+    if not course_link and not course_name:
+        error_mesages_request.append({'msg':'Name and URL are required!'}),400
+    careerLink = CareerLink(user = user, skill_id = skill_id, course_name = course_name, course_link = course_link)
+    db.session.add(careerLink)
     db.session.commit()
-    return jsonify(newCareerLink), 200
+    return jsonify(careerLink.serialize()), 200
 
+@api.route('/careerlink/all', methods=['GET'])
+def api_careerall():
+    careerlinks = CareerLink.query.all()
+    careerlinks = list(map(lambda x:x.serialize(), careerlinks))
+    return jsonify(careerlinks) 
+
+@api.route('/skill/all', methods=['GET'])
+def api_skillall():
+    skills = SkillName.query.all()
+    skills = list(map(lambda x:x.serialize(), skills))
+    return jsonify(skills) 
+
+   
+    
