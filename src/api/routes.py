@@ -8,7 +8,11 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Careerpath
+
+from api.models import db, User, CareerpathName, SkillName, CareerLink
+
+from .special_methods.data_injector import upload_careers,upload_skills
+
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash ##HASH
 from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required ##TOKEN
@@ -18,7 +22,10 @@ import random
 import smtplib
 api = Blueprint('api', __name__)
 
-
+@api.before_app_first_request
+def main_load():
+    upload_careers()
+    upload_skills()
 
 #esto no va aqui
 
@@ -64,7 +71,7 @@ def handle_register():
     db.session.add(user)
     db.session.commit()
 
-    return jsonify("Aqui estamos"), 200
+    return jsonify("user created"), 200
 
 @api.route('/login', methods=['POST'])
 def login():
@@ -87,7 +94,7 @@ def login():
         user = User.query.filter_by(email=email, password=password).first()
         expiration = datetime.timedelta(days=1)
         access_token = create_access_token(identity=user.id, expires_delta=expiration)
-        return jsonify('The login has been successful.', {'token':access_token, 'user_id':user.id}),200
+        return jsonify('The login has been successful.', {'token':access_token, 'user_id':user.id, 'name':user.name}),200
     except:
         return jsonify("Bad Username or password"),401
     # if not user:
@@ -181,22 +188,26 @@ def pass_update(id):
 
 @api.route('/careerpath/all', methods=['GET'])
 def api_all():
-    careerpaths = Careerpath.query.all()
-    careerpaths = list(map(lambda x:x.serialize(), careerpaths))
-#     careerpath = [
-#     {'id': 0,
-#      'name': 'Front-End Developer',React, Angular, JQuery, Bootstrap'
-#      },
-#      'skills': 'HTML5, CSS, Javascript, 
-#     {'id': 1,
-#      'name': 'Back-End Developer',
-#      'skills': 'Java, Python, Node, Ruby, .Net, SQL, Apache, IIS Servers'
-#      },
-#     {'id': 2,
-#      'name': 'Mobile Developer',
-#      'skills': 'Java, React Native, REST'
-#      }
-# ]
+    # careerpaths = Careerpath.query.all()
+    # careerpaths = list(map(lambda x:x.serialize(), careerpaths))
+    careerpaths = [
+    {'id': 0,
+    'img':'{frontEndUrl}',
+     'name': 'Front-End Developer',
+     'skills': 'HTML5, CSS, Javascript'
+     
+     },
+    {'id': 1,
+    'img':'{frontEndUrl}',
+     'name': 'Back-End Developer',
+     'skills': 'Java, Python, Node, Ruby, .Net, SQL, Apache, IIS Servers'
+     },
+    {'id': 2,
+    'img':'{frontEndUrl}',
+     'name': 'Mobile Developer',
+     'skills': 'Java, React Native, REST'
+     }
+]
     return jsonify(careerpaths)
 
     @api.route('/learningpathview', methods=['POST'])
