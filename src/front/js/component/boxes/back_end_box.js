@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
 import PropTypes from "prop-types";
 
-export const Box = props => {
+export const Back_End_Box = props => {
 	const { store, actions } = useContext(Context);
 	const [list, setList] = useState([]);
 	const [name, setName] = useState("");
@@ -30,73 +30,6 @@ export const Box = props => {
 		<div className=" p-4">
 			<h3>{props.name}</h3>
 
-			{/* <div className="box-row  p-2">
-                <h3>{props.name}</h3>
-
-                <span>
-                    <a href="https://www.freecodecamp.org/learn/">https://www.freecodecamp.org/learn/</a>
-                </span>
-                <div>
-                    <div className="form-check form-check-inline">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            name="inlineRadioOptions"
-                            id="inlineRadio1"
-                            value="option1"
-                        />
-                        <label className="form-check-label" htmlFor="inlineRadio1">
-                            In Progress
-						</label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                        <input
-                            className="form-check-input"
-                            type="radio"
-                            name="inlineRadioOptions"
-                            id="inlineRadio2"
-                            value="option2"
-                        />
-                        <label className="form-check-label" htmlFor="inlineRadio2">
-                            Completed
-						</label>
-                    </div>
-                </div>
-
-                {list.map(item => (
-                    <div className="list-group-item " key={item.id}>
-                        <span>
-                            <a href="https://www.freecodecamp.org/learn/">{item.url}</a>
-                        </span>
-                        <div>
-                            <div className="form-check form-check-inline">
-                                <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="inlineRadioOptions"
-                                    id="inlineRadio1"
-                                    value="option1"
-                                />
-                                <label className="form-check-label" htmlFor="inlineRadio1">
-                                    In Progress
-								</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input
-                                    className="form-check-input"
-                                    type="radio"
-                                    name="inlineRadioOptions"
-                                    id="inlineRadio2"
-                                    value="option2"
-                                />
-                                <label className="form-check-label" htmlFor="inlineRadio2">
-                                    Completed
-								</label>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div> */}
 			{list.map(item => (
 				<div className="box-row my-2 p-2" key={item.id}>
 					<h3>{item.name}</h3>
@@ -198,7 +131,7 @@ export const Box = props => {
 	);
 };
 
-Box.propTypes = {
+Back_End_Box.propTypes = {
 	name: PropTypes.string,
 	content: PropTypes.string
 };

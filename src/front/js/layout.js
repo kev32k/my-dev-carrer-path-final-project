@@ -34,7 +34,7 @@ const Layout = () => {
 						<Route exact path="/learningPath">
 							<LearningPath />
 						</Route>
-						<Route exact path="/learningPathView">
+						<Route exact path="/learningPathView/:box_indicator">
 							<LearningPathView />
 						</Route>
 						<Route exact path="/login">

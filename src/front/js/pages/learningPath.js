@@ -15,24 +15,27 @@ export const LearningPath = () => {
 
 	return (
 		<div className="container">
-			<h4 className="p-3 mx-4 mt-5">Select any of our recommended career paths curricula</h4>
+			<h4 className="p-3 mx-4 mt-5">Select a career path to start adding your online courses</h4>
 			<LongCard
 				img={frontEndUrl}
 				name="Become a Front-End Expert"
 				content="Get started as a front-end web developer. 
                     Add your online courses on HTML, CSS, Javascript, React, Angular, JQuery, and Bootstrap."
+				view_state={0}
 			/>
 			<LongCard
 				img={backEndUrl}
 				name="Become a Back-End Developer"
 				content="Get started as a back-end web developer. 
                     Add your online courses on Java, Python, Node, Ruby, .Net, SQL, Apache and IIS Servers."
+				view_state={1}
 			/>
 			<LongCard
 				img={mobileUrl}
 				name="Become a Mobile App Developer"
 				content="Get started as an Android / Apple app developer. 
                     Add your online courses on Java, React Native, REST."
+				view_state={2} //variable que me indique cual box ensenar
 			/>
 		</div>
 	);
