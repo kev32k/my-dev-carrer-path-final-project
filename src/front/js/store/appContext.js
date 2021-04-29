@@ -24,8 +24,9 @@ const injectContext = PassedComponent => {
 		useEffect(() => {
 			async function main_loader() {
 				await state.actions.fetchCareerPaths();
-				await state.actions.get_all_skills();
-				await state.actions.sort_skills();
+				await state.actions.fetchSkills();
+				//await state.actions.get_all_skills();
+				state.actions.sort_skills();
 			}
 
 			main_loader();

@@ -23,26 +23,26 @@ export const Home = () => {
 	// console.log(store.careerpaths[0]);
 	//console.log(store.careerpaths[0].name);
 
-	useEffect(() => {
-		fetch("https://www.udemy.com/api-2.0/courses/959700/", {
-			method: "GET",
-			headers: {
-				Accept: "application/json, text/plain, */*",
-				Authorization:
-					"Basic YzhuVVQ5bHdxNHNjNWF5M09yVkl1eXF6R010MDFFVzJZenpMbXV1TDo5S0pzODFPdkFrV2NHbHhoV3lmbWFGMzZJcEo0ZE15QldJRTJiMDBEV216SmpqSjcza0l2bGZsZFZBNVRIbENOQ1B5ZURQc1VNMjIzZE51Njh2bE9QemgwVVM4eDMyVVlsdlJkM1dXTThMOWNsNXJxZVZoNlRsc1BCMXJ4V09FYw==",
-				"Content-Type": "application/json;charset=utf-8"
-			}
-		})
-			.then(response => {
-				console.log("aqui");
-				return response.json();
-			})
-			.then(data => {
-				console.log(data);
-				setCourse(data);
-			})
-			.catch(error => console.log(error));
-	}, []);
+	// useEffect(() => {
+	// 	fetch("https://www.udemy.com/api-2.0/courses/959700/", {
+	// 		method: "GET",
+	// 		headers: {
+	// 			Accept: "application/json, text/plain, */*",
+	// 			Authorization:
+	// 				"Basic YzhuVVQ5bHdxNHNjNWF5M09yVkl1eXF6R010MDFFVzJZenpMbXV1TDo5S0pzODFPdkFrV2NHbHhoV3lmbWFGMzZJcEo0ZE15QldJRTJiMDBEV216SmpqSjcza0l2bGZsZFZBNVRIbENOQ1B5ZURQc1VNMjIzZE51Njh2bE9QemgwVVM4eDMyVVlsdlJkM1dXTThMOWNsNXJxZVZoNlRsc1BCMXJ4V09FYw==",
+	// 			"Content-Type": "application/json;charset=utf-8"
+	// 		}
+	// 	})
+	// 		.then(response => {
+	// 			console.log("aqui");
+	// 			return response.json();
+	// 		})
+	// 		.then(data => {
+	// 			console.log(data);
+	// 			setCourse(data);
+	// 		})
+	// 		.catch(error => console.log(error));
+	// }, []);
 
 	// if (store.careerpaths[0] === undefined) {
 	// 	console.log("waiting");
@@ -55,27 +55,27 @@ export const Home = () => {
 	return (
 		<div>
 			<Hero />
-			<div className="container">
-				{/* <Card
-						img={frontEndUrl}
-						name="Front-End Developer"
-						content="Get started as a front-end web developer.
+			<div className="row d-flex justify-content-center">
+				<Card
+					img={frontEndUrl}
+					name="Front-End Developer"
+					content="Get started as a front-end web developer.
 	                    Add your online courses on HTML, CSS, Javascript, React, Angular, JQuery, and Bootstrap."
-					/>
-					<Card
-						img={backEndUrl}
-						name="Back-End Developer"
-						content="Get started as a back-end web developer.
+				/>
+				<Card
+					img={backEndUrl}
+					name="Back-End Developer"
+					content="Get started as a back-end web developer.
 	                    Add your online courses on Java, Python, Node, Ruby, .Net, SQL, Apache and IIS Servers."
-					/>
-					<Card
-						img={mobileUrl}
-						name="Mobile Developer"
-						content="Get started as an Android / Apple app developer.
+				/>
+				<Card
+					img={mobileUrl}
+					name="Mobile Developer"
+					content="Get started as an Android / Apple app developer.
 	                    Add your online courses on Java, React Native, REST."
-					/> */}
+				/>
 
-				{store.careerpaths ? (
+				{/* {store.careerpaths ? (
 					<div className="newOverflow">
 						{store.careerpaths.map((item, index) => {
 							return (
@@ -89,7 +89,7 @@ export const Home = () => {
 					</div>
 				) : (
 					console.log("loading")
-				)}
+				)} */}
 				{/* <Card
 						img={backEndUrl}
 						// name={store.careerpaths[0].name}
@@ -115,7 +115,7 @@ export const Home = () => {
 						)} */}
 			</div>
 
-			<div className="feature-title text-center mt-5">
+			{/* <div className="feature-title text-center mt-5">
 				<h3>⭐ Editor Pick: Our Favorite Online Course of the Month ⭐</h3>
 			</div>
 
@@ -137,7 +137,7 @@ export const Home = () => {
 						</a>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };
