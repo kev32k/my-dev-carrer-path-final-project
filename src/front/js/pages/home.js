@@ -60,19 +60,22 @@ export const Home = () => {
 					img={frontEndUrl}
 					name="Front-End Developer"
 					content="Get started as a front-end web developer.
-	                    Add your online courses on HTML, CSS, Javascript, React, Angular, JQuery, and Bootstrap."
+                        Add your online courses on HTML, CSS, Javascript, React, Angular, JQuery, and Bootstrap."
+					view_state={0}
 				/>
 				<Card
 					img={backEndUrl}
 					name="Back-End Developer"
 					content="Get started as a back-end web developer.
-	                    Add your online courses on Java, Python, Node, Ruby, .Net, SQL, Apache and IIS Servers."
+                        Add your online courses on Java, Python, Node, Ruby, .Net, SQL, Apache and IIS Servers."
+					view_state={1}
 				/>
 				<Card
 					img={mobileUrl}
 					name="Mobile Developer"
 					content="Get started as an Android / Apple app developer.
-	                    Add your online courses on Java, React Native, REST."
+                        Add your online courses on Java, React Native, REST."
+					view_state={2}
 				/>
 
 				{/* {store.careerpaths ? (

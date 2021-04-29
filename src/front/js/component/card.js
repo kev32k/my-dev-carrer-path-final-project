@@ -1,8 +1,12 @@
-import React from "react";
+import React, { Component, useContext } from "react";
 import PropTypes from "prop-types";
 
 import "../../styles/index.scss";
 import "../../styles/card.scss";
+
+import { Link } from "react-router-dom";
+
+import { Context } from "../store/appContext";
 
 export const Card = props => {
 	return (
@@ -11,7 +15,11 @@ export const Card = props => {
 			<div className="card-body">
 				<h3>{props.name}</h3>
 				<p className="card-text">{props.content}</p>
-				<button className="btn btn-card p-3 m-1">Add career path ⭐</button>
+				<Link key="0" to={"/learningpathview/" + props.view_state}>
+					<button type="button" className="btn btn-card p-3 m-1">
+						Add to my curricula
+					</button>
+				</Link>
 			</div>
 		</div>
 	);
@@ -20,5 +28,6 @@ export const Card = props => {
 Card.propTypes = {
 	img: PropTypes.string,
 	name: PropTypes.string,
-	content: PropTypes.string
+	content: PropTypes.string,
+	view_state: PropTypes.number
 };
