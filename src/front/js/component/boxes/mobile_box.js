@@ -46,6 +46,28 @@ export const Mobile_Box = props => {
 
 		setList(newList);
 		console.log(newList);
+
+		var myHeaders = new Headers();
+		myHeaders.append("Authorization", "Bearer " + store.bearer_token);
+		myHeaders.append("Content-Type", "application/json");
+
+		var raw = JSON.stringify({
+			course_name: course_name,
+			course_url: course_url,
+			skill_id: skill_id
+		});
+
+		var requestOptions = {
+			method: "POST",
+			headers: myHeaders,
+			body: raw,
+			redirect: "follow"
+		};
+
+		fetch(process.env.BACKEND_URL + "/api/publish-careerlinks", requestOptions)
+			.then(response => response.text())
+			.then(result => console.log(result))
+			.catch(error => console.log("error", error));
 	}
 
 	return (

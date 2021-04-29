@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
 import PropTypes from "prop-types";
 import DropdownButton from "react-bootstrap/DropdownButton";
@@ -91,6 +91,17 @@ export const Front_End_Box = props => {
 			.then(result => console.log(result))
 			.catch(error => console.log("error", error));
 	}
+
+	useEffect(() => {
+		var requestOptions = {
+			method: "GET",
+			redirect: "follow"
+		};
+		fetch(process.env.BACKEND_URL + "/api/careerlink/all", requestOptions)
+			.then(response => response.json())
+			.then(result => setList(result))
+			.catch(error => console.log("error", error));
+	}, []);
 
 	return (
 		<div className=" p-4">
