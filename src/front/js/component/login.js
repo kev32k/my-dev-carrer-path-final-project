@@ -32,14 +32,15 @@ export const Login = () => {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data);
+				console.log(data[1].token);
 				sessionStorage.setItem("token", data[1].token);
 				actions.save_username(data[1].name);
+				actions.save_token(data[1].token);
+
+				//actions.save_userid(data[1].id);
 				setAuth(true);
 			})
-			.catch(err => {
-				console.log(err);
-				alert(err[0].msg);
-			});
+			.catch(error => console.log("error", error));
 	};
 
 	return (
