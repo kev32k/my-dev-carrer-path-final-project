@@ -55,27 +55,27 @@ export const Home = () => {
 	return (
 		<div>
 			<Hero />
-			<div className="container">
-				{/* <Card
-						img={frontEndUrl}
-						name="Front-End Developer"
-						content="Get started as a front-end web developer.
+			<div className="row d-flex justify-content-center">
+				<Card
+					img={frontEndUrl}
+					name="Front-End Developer"
+					content="Get started as a front-end web developer.
 	                    Add your online courses on HTML, CSS, Javascript, React, Angular, JQuery, and Bootstrap."
-					/>
-					<Card
-						img={backEndUrl}
-						name="Back-End Developer"
-						content="Get started as a back-end web developer.
+				/>
+				<Card
+					img={backEndUrl}
+					name="Back-End Developer"
+					content="Get started as a back-end web developer.
 	                    Add your online courses on Java, Python, Node, Ruby, .Net, SQL, Apache and IIS Servers."
-					/>
-					<Card
-						img={mobileUrl}
-						name="Mobile Developer"
-						content="Get started as an Android / Apple app developer.
+				/>
+				<Card
+					img={mobileUrl}
+					name="Mobile Developer"
+					content="Get started as an Android / Apple app developer.
 	                    Add your online courses on Java, React Native, REST."
-					/> */}
+				/>
 
-				{store.careerpaths ? (
+				{/* {store.careerpaths ? (
 					<div className="newOverflow">
 						{store.careerpaths.map((item, index) => {
 							return (
@@ -89,7 +89,7 @@ export const Home = () => {
 					</div>
 				) : (
 					console.log("loading")
-				)}
+				)} */}
 				{/* <Card
 						img={backEndUrl}
 						// name={store.careerpaths[0].name}
