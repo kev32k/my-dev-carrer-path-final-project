@@ -268,7 +268,13 @@ def add_course():
 def api_careerall():
     careerlinks = CareerLink.query.all()
     careerlinks = list(map(lambda x:x.serialize(), careerlinks))
-    return jsonify(careerlinks) 
+    return jsonify(careerlinks)
+
+@api.route('/getuser/all', methods=['GET'])
+def api_userall():
+    users = User.query.all()
+    users = list(map(lambda x:x.serialize(), users))
+    return jsonify(users) 
 
 
 @api.route('/skill/all', methods=['GET'])

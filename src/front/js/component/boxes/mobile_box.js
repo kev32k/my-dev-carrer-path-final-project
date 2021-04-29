@@ -1,12 +1,26 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../../store/appContext";
 import PropTypes from "prop-types";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 
 export const Mobile_Box = props => {
 	const { store, actions } = useContext(Context);
 	const [list, setList] = useState([]);
 	const [name, setName] = useState("");
 	const [url, setUrl] = useState("");
+	const [value, setValue] = useState("");
+	let valueN = parseInt(value) - 1;
+	const [skill, setSkill] = useState("");
+
+	const handleSelect = e => {
+		console.log(e);
+		//console.log(n);
+		setValue(e);
+		setSkill(store.all_skills[parseInt(e) - 1].name);
+		//setSkill(store.all_skills[valueN] !== undefined ? store.all_skills[valueN+1].name : "empty");
+		//handleChangeSkill();
+	};
 
 	function handleChangeName(event) {
 		setName(event.target.value);
@@ -17,13 +31,21 @@ export const Mobile_Box = props => {
 	}
 
 	function handleChangeSkill(event) {
-		setSkill(event.target.value);
+		console.log("selecting...");
+		console.log("event");
+		console.log(event);
+		//setSkill(event);
+		//setSkill(store.all_skills[valueN] !== undefined ? store.all_skills[valueN + 1].name : "empty");
 	}
 
 	function handleAdd() {
-		const newList = list.concat({ name, url });
+		const newList = list.concat({ name, url, value, skill });
+		//console.log(value);
+
+		//actions.add_career_link(name, url, skill);
 
 		setList(newList);
+		console.log(newList);
 	}
 
 	return (
@@ -36,6 +58,9 @@ export const Mobile_Box = props => {
 
 					<span>
 						<a href={item.url}>{item.url}</a>
+					</span>
+					<span>
+						<p>{item.skill}</p>
 					</span>
 					<div>
 						<div className="form-check form-check-inline">
@@ -111,18 +136,44 @@ export const Mobile_Box = props => {
 						Course skill
 					</label>
 					<div className="col-sm-10">
-						<div className="input-group mb-3">
+						{/* <div className="input-group mb-3">
 							<select className="custom-select form-control" id="inputGroupSelect01 inputSkill">
-								<option selected>Select a skill....</option>
-								{store.mobile_skills.map((item, index) => {
+								<option onClick={handleChangeSkill} defaultValue>
+									Select a skill....
+								</option>
+								{store.mobile_skills.map((skillItem, indexSkill) => {
+									console.log(indexSkill);
 									return (
-										<option key={index} value={index}>
-											{item.name}
+										<option key={skillItem.id} value={skillItem.id}>
+											{skillItem.name}
 										</option>
 									);
 								})}
 							</select>
-						</div>
+						</div> */}
+						<DropdownButton
+							alignRight
+							title={
+								store.all_skills[valueN] !== undefined ? store.all_skills[valueN].name : "Select Skill"
+							}
+							id="dropdown-menu-align-right"
+							onSelect={handleSelect}>
+							{store.mobile_skills.map((skillItem, indexSkill) => {
+								console.log(indexSkill);
+								return (
+									<Dropdown.Item eventKey={skillItem.id} key={indexSkill} value={skillItem.id}>
+										{skillItem.name}
+									</Dropdown.Item>
+								);
+							})}
+							{/* <Dropdown.Item eventKey="option-1">option-1</Dropdown.Item>
+							<Dropdown.Item eventKey="option-2">option-2</Dropdown.Item>
+							<Dropdown.Item eventKey="option-3">option 3</Dropdown.Item> */}
+							{/* <Dropdown.Divider />
+							<Dropdown.Item eventKey="some link">some link</Dropdown.Item> */}
+						</DropdownButton>
+						{console.log(store.all_skills[valueN])}
+						{/* <h4>You selected {store.all_skills[valueN].name}</h4> */}
 					</div>
 				</div>
 				<button
