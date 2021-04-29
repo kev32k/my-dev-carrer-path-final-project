@@ -25,7 +25,7 @@ const injectContext = PassedComponent => {
 			async function main_loader() {
 				await state.actions.fetchCareerPaths();
 				await state.actions.fetchSkills();
-				await state.actions.fetchUser();
+				//await state.actions.fetchUser();
 				//await state.actions.get_all_skills();
 				state.actions.sort_skills();
 				//state.actions.add_career_link();

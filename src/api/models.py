@@ -10,6 +10,8 @@ class User(db.Model):
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     career_link = db.relationship('CareerLink', backref="user", lazy=True)
 
+    
+
     def __repr__(self):
         return '<User %r>' % self.name
 

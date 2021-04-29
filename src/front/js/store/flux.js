@@ -78,6 +78,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			save_username: name => {
 				setStore({ name: name });
 			},
+			save_token: token => {
+				const store = getStore();
+				setStore({ bearer_token: token });
+				console.log(store.bearer_token);
+			},
+			save_userid: id => {
+				setStore({ id: id });
+			},
 			current_career_id: id => {
 				//1 2 3 fe be mobile
 				setStore({ current_career_path_id: id });

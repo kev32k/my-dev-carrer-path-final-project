@@ -110,7 +110,7 @@ export const Front_End_Box = props => {
 					<h3>{item.course_name}</h3>
 
 					<span>
-						<a href={item.course_url}>{item.url}</a>
+						<a href={item.course_url}>{item.course_url}</a>
 					</span>
 					<span>
 						<p>{item.skill}</p>
