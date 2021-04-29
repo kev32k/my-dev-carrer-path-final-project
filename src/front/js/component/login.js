@@ -36,6 +36,7 @@ export const Login = () => {
 				sessionStorage.setItem("token", data[1].token);
 				actions.save_username(data[1].name);
 				actions.save_token(data[1].token);
+				actions.show_login();
 
 				//actions.save_userid(data[1].id);
 				setAuth(true);
