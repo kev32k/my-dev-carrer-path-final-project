@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import "../../styles/index.scss";
 import "../../styles/login.scss";
 import "../../styles/longCard.scss";
@@ -8,7 +8,13 @@ import { Button } from "./button";
 import frontendUrl from "../../img/back-end.jpg";
 import PropTypes from "prop-types";
 
+import { Link } from "react-router-dom";
+
+import { Context } from "../store/appContext";
+
 export const LongCard = props => {
+	const { store, actions } = useContext(Context);
+
 	return (
 		<div className="container-fluid">
 			<div className="row g-0 text-center">
@@ -19,9 +25,11 @@ export const LongCard = props => {
 					<h3 className="text-start">{props.name}</h3>
 					<p className="text-start">{props.content}</p>
 					<div className="text-start">
-						<button type="button" className="btn btn-card p-3 m-1">
-							Add to my curricula
-						</button>
+						<Link key="0" to={"/learningpathview/" + props.view_state}>
+							<button type="button" className="btn btn-card p-3 m-1">
+								Add to my curricula
+							</button>
+						</Link>
 					</div>
 				</div>
 			</div>
@@ -33,5 +41,6 @@ export const LongCard = props => {
 LongCard.propTypes = {
 	img: PropTypes.string,
 	name: PropTypes.string,
-	content: PropTypes.string
+	content: PropTypes.string,
+	view_state: PropTypes.number
 };
