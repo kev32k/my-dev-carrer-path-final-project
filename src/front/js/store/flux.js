@@ -137,20 +137,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			add_career_link: async (course_name, course_url, skill_id) => {
 				const store = getStore();
-				const requestOptions = {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: "Bearer " + store.bearer_token
-					},
-					body: JSON.stringify({ course_url: course_url, course_name: course_name, skill_id: skill_id })
-				};
+				// const requestOptions = {
+				//     method: "POST",
+				//     headers: {
+				//         "Content-Type": "application/json",
+				//         Authorization: "Bearer " + store.bearer_token
+				//     },
+				//     body: JSON.stringify({ course_url: course_url, course_name: course_name, skill_id: skill_id })
+				// };
 
-				const result = await fetch(store.global_url + "api/publish-careerlinks", requestOptions)
-					.then(response => response.json())
-					.then(data => {
-						console.log(data);
-					});
+				// const result = await fetch(store.global_url + "api/publish-careerlinks", requestOptions)
+				//     .then(response => response.json())
+				//     .then(data => {
+				//         console.log(data);
+				//     });
+
+				// var myHeaders = new Headers();
+				// myHeaders.append("Authorization", "Bearer " + store.bearer_token);
+				// myHeaders.append("Content-Type", "application/json");
+
+				// var raw = JSON.stringify({
+				// 	course_name: course_name,
+				// 	course_url: course_url,
+				// 	skill_id: skill_id
+				// });
+
+				// var requestOptions = {
+				// 	method: "POST",
+				// 	headers: myHeaders,
+				// 	body: raw,
+				// 	redirect: "follow"
+				// };
+
+				// fetch(store.global_url + "api/publish-careerlinks", requestOptions)
+				// 	.then(response => response.text())
+				// 	.then(result => console.log(result))
+				// 	.catch(error => console.log("error", error));
 			}
 		}
 	};
