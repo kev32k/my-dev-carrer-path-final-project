@@ -7,6 +7,7 @@ export const Front_End_Box = props => {
 	const [list, setList] = useState([]);
 	const [name, setName] = useState("");
 	const [url, setUrl] = useState("");
+	const [skill, setSkill] = useState("");
 
 	function handleChangeName(event) {
 		setName(event.target.value);
@@ -22,8 +23,11 @@ export const Front_End_Box = props => {
 
 	function handleAdd() {
 		const newList = list.concat({ name, url });
+		console.log(skill);
 
-		setList(newList);
+		actions.add_career_link(name, url, skill);
+
+		//setList(newList);
 	}
 
 	return (
@@ -111,16 +115,17 @@ export const Front_End_Box = props => {
 					</label>
 					<div className="col-sm-10">
 						<div className="input-group mb-3">
-							<select className="custom-select form-control" id="inputGroupSelect01 inputSkill">
-								<option selected>Select a skill....</option>
-								{store.front_end_skills.map((item, index) => {
-									return (
-										<option key={index} value={index}>
-											{item.name}
-										</option>
-									);
-								})}
-							</select>
+							{store.front_end_skills.map((item, index) => {
+								return (
+									<input
+										key={index}
+										className="btn btn-primary"
+										type="button"
+										value={item.name}
+										onClick={console.log(index)}
+									/>
+								);
+							})}
 						</div>
 					</div>
 				</div>
