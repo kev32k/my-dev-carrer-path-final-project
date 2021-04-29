@@ -29,22 +29,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			},
 
-			udemy_api: async (title, url) => {
-				const requestOptions = {
-					method: "POST",
-					headers: {
-						Accept: "application/json, text/plain, */*",
-						Authorization:
-							"Basic YzhuVVQ5bHdxNHNjNWF5M09yVkl1eXF6R010MDFFVzJZenpMbXV1TDo5S0pzODFPdkFrV2NHbHhoV3lmbWFGMzZJcEo0ZE15QldJRTJiMDBEV216SmpqSjcza0l2bGZsZFZBNVRIbENOQ1B5ZURQc1VNMjIzZE51Njh2bE9QemgwVVM4eDMyVVlsdlJkM1dXTThMOWNsNXJxZVZoNlRsc1BCMXJ4V09FYw==",
-						"Content-Type": "application/json;charset=utf-8"
-					}
-				};
-				fetch("https://www.udemy.com/api-2.0/courses/959700/")
-					.then(response => response.json())
-					.then(data => console.log(data));
+			// udemy_api: async (title, url) => {
+			// 	const requestOptions = {
+			// 		method: "POST",
+			// 		headers: {
+			// 			Accept: "application/json, text/plain, */*",
+			// 			Authorization:
+			// 				"Basic YzhuVVQ5bHdxNHNjNWF5M09yVkl1eXF6R010MDFFVzJZenpMbXV1TDo5S0pzODFPdkFrV2NHbHhoV3lmbWFGMzZJcEo0ZE15QldJRTJiMDBEV216SmpqSjcza0l2bGZsZFZBNVRIbENOQ1B5ZURQc1VNMjIzZE51Njh2bE9QemgwVVM4eDMyVVlsdlJkM1dXTThMOWNsNXJxZVZoNlRsc1BCMXJ4V09FYw==",
+			// 			"Content-Type": "application/json;charset=utf-8"
+			// 		}
+			// 	};
+			// 	fetch("https://www.udemy.com/api-2.0/courses/959700/")
+			// 		.then(response => response.json())
+			// 		.then(data => console.log(data));
 
-				setStore({ course_api: result });
-			},
+			// 	setStore({ course_api: result });
+			// },
 
 			// register_user: async (name, email, password) => {
 			// 	const requestOptions = {

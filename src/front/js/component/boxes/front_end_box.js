@@ -231,7 +231,7 @@ export const Front_End_Box = props => {
 				<button
 					className="btn btn-card p-1 m-1 position-absolute top-100 start-50 translate-middle"
 					onClick={handleAdd}>
-					Add new ⭐
+					Add new course ⭐
 				</button>
 			</div>
 		</div>

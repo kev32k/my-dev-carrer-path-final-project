@@ -8,6 +8,7 @@ import "../../styles/home.scss";
 import "../../styles/hero.scss";
 import { Hero } from "../component/hero";
 import { Card } from "../component/card";
+import reactImageUrl from "../../img/react.jpg";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -126,13 +127,18 @@ export const Home = () => {
 				<div className=" mt-5">
 					<h5 className="card-header">Featured Course</h5>
 					<div className="card-body">
-						<h5 className="card-title">{course.title}</h5>
+						<h5 className="card-title">
+							The Complete React Native + Hooks Course [2020 Edition]
+							{course.title}
+						</h5>
+						<img src={reactImageUrl} />
 						<img src={course.image_480x270} />
 						<p className="card-text">
 							Understand React Native v0.62.2 with Hooks, Context, and React Navigation.
 						</p>
 						<a
-							href={"https://www.udemy.com" + course.url}
+							// href={"https://www.udemy.com" + course.url}
+							href={"https://www.udemy.com/course/the-complete-react-native-and-redux-course/"}
 							className="btn btn-primary mb-5"
 							target="_blank"
 							rel="noopener noreferrer">

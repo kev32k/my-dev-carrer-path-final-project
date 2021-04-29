@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { Front_End_Box } from "../component/boxes/front_end_box";
 import { Back_End_Box } from "../component/boxes/back_end_box";
 import { Mobile_Box } from "../component/boxes/mobile_box";
+import { Link } from "react-router-dom";
+import adImageUrl from "../../img/ad.png";
 import "../../styles/index.scss";
 //import "../../styles/card.scss";
 
@@ -19,6 +21,17 @@ export const LearningPathView = () => {
 			<div className="row my-4 feature-title">
 				<h3>Add a bookmark to your online courses:</h3>
 			</div>
+			<Link to="/userdashboard">
+				<button className="btn btn-card " type="button">
+					Go to my Dashboard
+				</button>
+			</Link>
+			<section className="ads mt-5 border">
+				<img
+					src={adImageUrl}
+					to="https://www.udemy.com/course/html-css-bootstrap-build-your-first-website-today/"
+				/>
+			</section>
 
 			<div className="row my-1">
 				<div className="col-4">

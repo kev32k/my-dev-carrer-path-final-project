@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "../../styles/userdashboard.scss";
 import profileImageUrl from "../../img/avatar-profile-200px.png";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const User_Dashboard = () => {
 	const { store, actions } = useContext(Context);
@@ -23,8 +24,10 @@ export const User_Dashboard = () => {
 							<div className="d-flex flex-column align-items-center text-center">
 								<img img src={profileImageUrl} alt="Admin" className="" />
 								<div className="mt-3">
+									<h3 className="text-secondary mb-1">
+										Howdy! <strong>{store.name}</strong>
+									</h3>
 									<button className="btn btn-outline-primary m-1">Change Picture</button>
-									<p className="text-secondary mb-1">{store.name}</p>
 									<button className="btn btn-outline-primary m-1">Change Password</button>
 									<button className="btn btn-outline-primary m-1" onClick={handleLogOut}>
 										Logout
@@ -38,9 +41,11 @@ export const User_Dashboard = () => {
 					<div className="row">
 						<div className="col-sm-5">
 							<p className="mb">My Carrer Path</p>
-							<div>
-								<button className="btn btn-card p-2 m-1">Front-end Developer</button>
-							</div>
+							<Link key="0" to={"/learningpathview/0"}>
+								<button type="button" className="btn btn-card p-3 m-1">
+									Front-End Developer
+								</button>
+							</Link>
 						</div>
 					</div>
 				</div>
