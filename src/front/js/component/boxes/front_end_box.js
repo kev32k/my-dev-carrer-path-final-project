@@ -102,7 +102,6 @@ export const Front_End_Box = props => {
 			.then(result => setList(result))
 			.catch(error => console.log("error", error));
 	}, []);
-
 	return (
 		<div className=" p-4">
 			<h3>{props.name}</h3>
