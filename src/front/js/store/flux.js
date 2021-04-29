@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			global_url: "https://3001-red-xerinae-zapfx33r.ws-us03.gitpod.io/",
+			global_url: process.env.BACKEND_URL,
 			bearer_token: "",
 			login: false,
 			careerpaths: [],
@@ -64,20 +64,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//1 2 3 fe be mobile
 				setStore({ current_career_path_id: id });
 			},
-			get_all_skills: async () => {
-				const store = getStore();
-				const requestOptions = {
-					method: "GET",
-					headers: { "Content-Type": "application/json" }
-				};
+			// get_all_skills: async () => {
+			// 	const store = getStore();
+			// 	const requestOptions = {
+			// 		method: "GET",
+			// 		headers: { "Content-Type": "application/json" }
+			// 	};
 
-				const result = await fetch(store.global_url + "api/skill/all", requestOptions)
+			// 	const result = await fetch(store.global_url + "api/skill/all", requestOptions)
+			// 		.then(response => response.json())
+			// 		.then(data => {
+			// 			console.log("mi madre el bicho");
+			// 			setStore({ all_skills: data });
+			// 			console.log(store.all_skills);
+			// 		});
+			// },
+			async fetchSkills() {
+				const store = getStore();
+				await fetch(process.env.BACKEND_URL + "/api/skill/all")
 					.then(response => response.json())
-					.then(data => {
-						console.log("mi madre el bicho");
-						setStore({ all_skills: data });
+					.then(result => {
+						console.log("apiskills");
+						console.log(result);
+						setStore({ all_skills: result });
+						console.log("listskills");
 						console.log(store.all_skills);
-					});
+					})
+					.catch(error => console.log("error", error));
 			},
 			sort_skills: () => {
 				const store = getStore();
