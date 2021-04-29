@@ -46,34 +46,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ course_api: result });
 			},
 
-			register_user: async (name, email, password) => {
-				const requestOptions = {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ name: name, email: email, password: password })
-				};
-				fetch(global_url + "api/register", requestOptions)
-					.then(response => response.json())
-					.then(data => console.log(data));
-			},
+			// register_user: async (name, email, password) => {
+			// 	const requestOptions = {
+			// 		method: "POST",
+			// 		headers: { "Content-Type": "application/json" },
+			// 		body: JSON.stringify({ name: name, email: email, password: password })
+			// 	};
+			// 	fetch(global_url + "api/register", requestOptions)
+			// 		.then(response => response.json())
+			// 		.then(data => console.log(data));
+			// },
 
-			login_user: async (email, password) => {
-				const store = getStore();
-				const requestOptions = {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ email: email, password: password })
-				};
+			// login_user: async (email, password) => {
+			// 	const store = getStore();
+			// 	const requestOptions = {
+			// 		method: "POST",
+			// 		headers: { "Content-Type": "application/json" },
+			// 		body: JSON.stringify({ email: email, password: password })
+			// 	};
 
-				await fetch(global_url + "api/login", requestOptions)
-					.then(response => response.json())
-					.then(data => setStore({ bearer_token: data }));
-				console.log(store.bearer_token);
+			// 	await fetch(global_url + "api/login", requestOptions)
+			// 		.then(response => response.json())
+			// 		.then(data => setStore({ bearer_token: data }));
+			// 	console.log(store.bearer_token);
 
-				if (store.bearer_token.length > 0) {
-					setStore({ login: true });
-				}
-			},
+			// 	if (store.bearer_token.length > 0) {
+			// 		setStore({ login: true });
+			// 		console.log(store.login);
+			// 	}
+			// },
 
 			save_username: name => {
 				setStore({ name: name });
@@ -82,6 +83,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				setStore({ bearer_token: token });
 				console.log(store.bearer_token);
+			},
+			show_login: () => {
+				const store = getStore();
+				setStore({ login: true });
+				console.log(store.login);
 			},
 			save_userid: id => {
 				setStore({ id: id });
