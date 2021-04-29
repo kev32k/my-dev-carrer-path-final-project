@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { Context } from "../../store/appContext";
 import PropTypes from "prop-types";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Button from "react-bootstrap/Button";
 
 export const Back_End_Box = props => {
 	const { store, actions } = useContext(Context);
@@ -17,7 +19,7 @@ export const Back_End_Box = props => {
 	}
 
 	function handleChangeSkill(event) {
-		setSkill(event.target.value);
+		console.log(event.target.value);
 	}
 
 	function handleAdd() {
@@ -112,16 +114,19 @@ export const Back_End_Box = props => {
 					</label>
 					<div className="col-sm-10">
 						<div className="input-group mb-3">
-							<select className="custom-select form-control" id="inputGroupSelect01 inputSkill">
-								<option selected>Select a skill....</option>
-								{store.back_end_skills.map((item, index) => {
-									return (
-										<option key={index} value={index}>
-											{item.name}
-										</option>
-									);
-								})}
-							</select>
+							<form onSubmit={handleChangeSkill}>
+								<label>
+									<select onChange={handleChangeSkill}>
+										<option selected>Choose...</option>
+										{store.front_end_skills.map((item, index) => {
+											<option key={index} value={index}>
+												{item.name}
+											</option>;
+										})}
+										<input type="submit" value="Submit" />
+									</select>
+								</label>
+							</form>
 						</div>
 					</div>
 				</div>

@@ -103,6 +103,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(store.back_end_skills);
 					console.log(store.mobile_skills);
 				}
+			},
+			add_career_link: async (course_name, course_url, skill_id) => {
+				const store = getStore();
+				const requestOptions = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.bearer_token
+					},
+					body: JSON.stringify({ course_url: course_url, course_name: course_name, skill_id: skill_id })
+				};
+
+				const result = await fetch(store.global_url + "api/publish-careerlinks", requestOptions)
+					.then(response => response.json())
+					.then(data => {
+						console.log(data);
+					});
 			}
 		}
 	};

@@ -294,12 +294,10 @@ def publish_careerlinks():
     careerlink.skill_id=skill_id
     careerlink.course_name=course_name
     careerlink.course_link=course_url
-
     careerlink.user_id=current_user
     
     db.session.add(careerlink)  #agrega un servicio a la base de datos
     db.session.commit()
-    
     return jsonify("Career Links have been added") 
 
    
