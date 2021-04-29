@@ -29,6 +29,16 @@ def main_load():
 
 #esto no va aqui
 
+@api.route('/user/<string:id>/careerpath', methods=['GET'])
+def getUserCareerPath(id):
+    usercareerlinks = CareerLink.query.filter_by(user_id=id).all()
+    if usercareerlinks is not None:
+        skills = list(map(lambda x: SkillName.query.filter_by(id=x.skill_id).all(), usercareerlinks))
+        if skills is not None:
+            usercareerpaths = list(map(lambda x: CareerpathName.query.filter_by(id=x.careerpath_name_id).all(), skills))
+    return jsonify(usercareerpaths)
+        
+
 @api.route('/register', methods=['POST'])
 def handle_register():
 
@@ -268,7 +278,13 @@ def add_course():
 def api_careerall():
     careerlinks = CareerLink.query.all()
     careerlinks = list(map(lambda x:x.serialize(), careerlinks))
-    return jsonify(careerlinks) 
+    return jsonify(careerlinks)
+
+@api.route('/getuser/all', methods=['GET'])
+def api_userall():
+    users = User.query.all()
+    users = list(map(lambda x:x.serialize(), users))
+    return jsonify(users) 
 
 
 @api.route('/skill/all', methods=['GET'])
