@@ -118,7 +118,7 @@ export const Home = () => {
 						)} */}
 			</div>
 
-			{/* <div className="feature-title text-center mt-5">
+			<div className="feature-title text-center mt-5">
 				<h3>⭐ Editor Pick: Our Favorite Online Course of the Month ⭐</h3>
 			</div>
 
@@ -140,7 +140,7 @@ export const Home = () => {
 						</a>
 					</div>
 				</div>
-			</div> */}
+			</div>
 		</div>
 	);
 };
