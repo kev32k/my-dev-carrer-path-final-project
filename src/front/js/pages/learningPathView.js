@@ -16,8 +16,8 @@ export const LearningPathView = () => {
 
 	return (
 		<div className="container">
-			<div className="row my-4">
-				<h2>My career path</h2>
+			<div className="row my-4 feature-title">
+				<h3>Add a bookmark to your online courses:</h3>
 			</div>
 
 			<div className="row my-1">

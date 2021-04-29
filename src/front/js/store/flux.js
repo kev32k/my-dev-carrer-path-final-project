@@ -28,6 +28,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			},
 
+			// async udemyfecth() {
+			// 	const store = getStore();
+			// 	await fetch(process.env.BACKEND_URL + "/api/careerpath/all")
+			// 		.then(response => response.json())
+			// 		.then(result => {
+			// 			console.log("api");
+			// 			console.log(result);
+			// 			setStore({ careerpaths: result });
+			// 			console.log("list");
+			// 			console.log(store.careerpaths[0].img);
+			// 		})
+			// 		.catch(error => console.log("error", error));
+			// },
+
 			register_user: async (name, email, password) => {
 				const requestOptions = {
 					method: "POST",
