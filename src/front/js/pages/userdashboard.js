@@ -10,8 +10,7 @@ export const User_Dashboard = () => {
 	let history = useHistory();
 
 	function handleLogOut() {
-		sessionStorage.setItem("userToken", "");
-		sessionStorage.clear();
+		actions.clear_token();
 		history.push("/login"); // whichever component you want it to route to
 	}
 

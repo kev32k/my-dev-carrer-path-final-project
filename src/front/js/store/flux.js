@@ -84,6 +84,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ bearer_token: token });
 				console.log(store.bearer_token);
 			},
+			clear_token: () => {
+				setStore({ bearer_token: "" });
+			},
 			show_login: () => {
 				const store = getStore();
 				setStore({ login: true });
