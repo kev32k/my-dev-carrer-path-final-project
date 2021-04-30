@@ -27,7 +27,7 @@ export const User_Dashboard = () => {
 										Howdy! <strong>{store.name}</strong>
 									</h3>
 									<button className="btn btn-outline-primary m-1">Change Picture</button>
-									<button className="btn btn-outline-primary m-1">Change Password</button>
+
 									<button className="btn btn-outline-primary m-1" onClick={handleLogOut}>
 										Logout
 									</button>
