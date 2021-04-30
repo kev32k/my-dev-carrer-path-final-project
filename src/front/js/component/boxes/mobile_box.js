@@ -92,21 +92,21 @@ export const Mobile_Box = props => {
 			.catch(error => console.log("error", error));
 	}
 
-	useEffect(() => {
-		var requestOptions = {
-			method: "GET",
-			redirect: "follow"
-		};
-		fetch(process.env.BACKEND_URL + "/api/careerlink/all", requestOptions)
-			.then(response => response.json())
-			.then(result => {
-				console.log("fetch get list");
-				console.log(result);
-				//setList(result);
-				setList(result);
-			})
-			.catch(error => console.log("error", error));
-	}, []);
+	// useEffect(() => {
+	// 	var requestOptions = {
+	// 		method: "GET",
+	// 		redirect: "follow"
+	// 	};
+	// 	fetch(process.env.BACKEND_URL + "/api/careerlink/all", requestOptions)
+	// 		.then(response => response.json())
+	// 		.then(result => {
+	// 			console.log("fetch get list");
+	// 			console.log(result);
+	// 			//setList(result);
+	// 			setList(result);
+	// 		})
+	// 		.catch(error => console.log("error", error));
+	// }, []);
 
 	return (
 		<div className=" p-4">
