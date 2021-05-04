@@ -99,7 +99,12 @@ export const Front_End_Box = props => {
 		};
 		fetch(process.env.BACKEND_URL + "/api/careerlink/all", requestOptions)
 			.then(response => response.json())
-			.then(result => setList(result))
+			.then(result => {
+				console.log("fetch get list");
+				console.log(result);
+				//setList(result);
+				setList(result);
+			})
 			.catch(error => console.log("error", error));
 	}, []);
 	return (

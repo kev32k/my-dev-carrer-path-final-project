@@ -16,7 +16,14 @@ export const LearningPath = () => {
 	return (
 		<div className="container">
 			<div className="row mt-5 mx-4 feature-title">
-				<h3>Select a career path to start adding your online courses</h3>
+				{store.bearer_token ? (
+					<h3>
+						<strong>Hi {store.name},</strong> please select a career path to start adding your online
+						courses
+					</h3>
+				) : (
+					<h3>Select a career path to start adding your online courses</h3>
+				)}
 			</div>
 			<LongCard
 				img={frontEndUrl}

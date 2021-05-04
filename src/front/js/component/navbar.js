@@ -11,7 +11,7 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-expand-md navbar-dark blue-gradient-bg collapse-dark-bg">
 			<div className="container">
-				{store.login ? (
+				{store.bearer_token ? (
 					<>
 						<a href="/" className="navbar-brand">
 							<img src={mainLogo} className="d-inline-block align-top" />

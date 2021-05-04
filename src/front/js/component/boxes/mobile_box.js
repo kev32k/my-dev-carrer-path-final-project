@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../../store/appContext";
 import PropTypes from "prop-types";
 import DropdownButton from "react-bootstrap/DropdownButton";
@@ -7,10 +7,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 export const Mobile_Box = props => {
 	const { store, actions } = useContext(Context);
 	const [list, setList] = useState([]);
-	const [name, setName] = useState("");
-	const [url, setUrl] = useState("");
-	const [value, setValue] = useState("");
-	let valueN = parseInt(value) - 1;
+	const [course_name, setName] = useState("");
+	const [course_url, setUrl] = useState("");
+	const [skill_id, setValue] = useState("");
+	let valueN = parseInt(skill_id) - 1;
 	const [skill, setSkill] = useState("");
 
 	const handleSelect = e => {
@@ -39,14 +39,36 @@ export const Mobile_Box = props => {
 	}
 
 	function handleAdd() {
-		const newList = list.concat({ name, url, value, skill });
+		const newList = list.concat({ course_name, course_url, skill_id, skill });
 		//console.log(value);
 
-		//actions.add_career_link(name, url, skill);
+		//actions.add_career_link(name, url, value);
 
 		setList(newList);
 		console.log(newList);
 
+		// var myHeaders = new Headers();
+		// myHeaders.append("Authorization", "Bearer " + store.bearer_token);
+		// myHeaders.append("Content-Type", "application/json");
+
+		// var raw = JSON.stringify({
+		// 	course_name: "sdf",
+		// 	course_url: "udecmy.com",
+		// 	skill_id: "1"
+		// });
+
+		// var requestOptions = {
+		// 	method: "POST",
+		// 	headers: myHeaders,
+		// 	body: raw,
+		// 	redirect: "follow"
+		// };
+
+		// fetch(store.global_url + "api/publish-careerlinks", requestOptions)
+		// 	.then(response => response.text())
+		// 	.then(result => ccc)
+		// 	.catch(error => console.log("error", error));
+		console.log(store.bearer_token);
 		var myHeaders = new Headers();
 		myHeaders.append("Authorization", "Bearer " + store.bearer_token);
 		myHeaders.append("Content-Type", "application/json");
@@ -70,16 +92,32 @@ export const Mobile_Box = props => {
 			.catch(error => console.log("error", error));
 	}
 
+	// useEffect(() => {
+	// 	var requestOptions = {
+	// 		method: "GET",
+	// 		redirect: "follow"
+	// 	};
+	// 	fetch(process.env.BACKEND_URL + "/api/careerlink/all", requestOptions)
+	// 		.then(response => response.json())
+	// 		.then(result => {
+	// 			console.log("fetch get list");
+	// 			console.log(result);
+	// 			//setList(result);
+	// 			setList(result);
+	// 		})
+	// 		.catch(error => console.log("error", error));
+	// }, []);
+
 	return (
 		<div className=" p-4">
 			<h3>{props.name}</h3>
 
 			{list.map(item => (
 				<div className="box-row my-2 p-2" key={item.id}>
-					<h3>{item.name}</h3>
+					<h3>{item.course_name}</h3>
 
 					<span>
-						<a href={item.url}>{item.url}</a>
+						<a href={item.course_url}>{item.course_url}</a>
 					</span>
 					<span>
 						<p>{item.skill}</p>
@@ -134,7 +172,7 @@ export const Mobile_Box = props => {
 							type="text"
 							className="form-control"
 							id="inputName"
-							value={name}
+							value={course_name}
 							onChange={handleChangeName}
 						/>
 					</div>
@@ -148,7 +186,7 @@ export const Mobile_Box = props => {
 							type="text"
 							className="form-control"
 							id="inputUrl"
-							value={url}
+							value={course_url}
 							onChange={handleChangeUrl}
 						/>
 					</div>
